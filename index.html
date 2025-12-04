@@ -1,177 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIF.Gifts - Your Gateway to AIF Ecosystem Rewards</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Inter"', 'sans-serif'],
+                        mono: ['"Space Mono"', 'monospace'],
+                    },
+                    colors: {
+                        black: '#1a1a1a', 
+                        offblack: '#222222',
+                        white: '#ffffff',
+                        offwhite: '#f9f9f9',
+                        gray: {
+                            100: '#f3f3f3',
+                            200: '#e5e5e5',
+                            500: '#737373',
+                            900: '#111111'
+                        }
+                    },
+                    animation: {
+                        'marquee': 'marquee 40s linear infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root {
-            --primary: #3498db;
-            --secondary: #8e44ad;
-            --accent: #00ff9d;
-            --dark-bg: #0a0a0a;
-        }
-        
         body {
-            font-family: 'Inter', 'Noto Sans TC', sans-serif;
-            background-color: var(--dark-bg);
-            color: #ffffff;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(52, 152, 219, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(142, 68, 173, 0.1) 0%, transparent 20%);
+            background-color: #ffffff;
+            color: #1a1a1a;
+            -webkit-font-smoothing: antialiased;
         }
         
-        .logo-font {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 800;
-            letter-spacing: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px rgba(0, 255, 157, 0.3);
-            animation: logoGlow 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes logoGlow {
-            0% { text-shadow: 0 0 10px rgba(0, 255, 157, 0.3); }
-            100% { text-shadow: 0 0 25px rgba(0, 255, 157, 0.6), 0 0 35px rgba(52, 152, 219, 0.4); }
-        }
-        
-        .gradient-text {
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .card {
-            background-color: rgba(26, 32, 44, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 255, 157, 0.2);
-            border-color: rgba(0, 255, 157, 0.3);
-        }
-        
-        .navbar {
-            background-color: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            transition: all 0.3s ease;
-            border: none;
-            font-weight: 600;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.4);
-        }
-        
-        .btn-secondary {
-            background-color: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-        
-        .btn-secondary:hover {
-            background-color: rgba(0, 255, 157, 0.1);
-            transform: translateY(-3px);
-        }
+        /* Language Switching Rules from index.html */
+        body[data-lang="en"] .lang-zh { display: none !important; }
+        body[data-lang="zh"] .lang-en { display: none !important; }
 
-        .btn-accent {
-            background: var(--accent);
-            color: #000;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fff; }
+        ::-webkit-scrollbar-thumb { background: #e5e5e5; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ccc; }
 
-        .btn-accent:hover {
-            box-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+        .btn-hover {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .btn-hover:hover {
             transform: translateY(-2px);
-        }
-        
-        .hero {
-            position: relative;
-            overflow: hidden;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-        }
-        
-        .hero:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%);
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://images.unsplash.com/photo-1614728263952-84ea256f9679?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.4;
-            animation: bgPan 30s infinite linear;
-        }
-        
-        @keyframes bgPan {
-            0% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 280px;
-            height: 100vh;
-            background: rgba(10, 10, 10, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 20px;
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
-            overflow-y: auto;
-        }
+        .reveal-text { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        .reveal-text.active { opacity: 1; transform: translateY(0); }
         
-        .mobile-menu.open {
-            display: block;
-            transform: translateX(0);
-        }
-
-        /* Modal Styles */
+        /* Modal Styles adapted to Light Theme */
         .modal {
             display: none;
             position: fixed;
@@ -179,489 +86,259 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
             z-index: 2000;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(5px);
         }
         
         .modal.active {
             display: flex;
+            animation: fadeIn 0.3s ease-out;
         }
         
         .modal-content {
-            background: rgba(26, 32, 44, 0.95);
-            border: 2px solid rgba(0, 255, 157, 0.3);
-            border-radius: 20px;
+            background: #ffffff;
+            border: 1px solid #1a1a1a;
+            border-radius: 12px; /* Consistent with index.html softer corners */
             max-width: 600px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
-            padding: 2rem;
+            padding: 2.5rem;
             position: relative;
-            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
+        /* Custom Mobile Menu Transition */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+        .mobile-menu.open {
+            transform: translateX(0);
         }
 
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: rotate(90deg);
-        }
-
-        /* Wallet Connection */
-        .wallet-option {
-            padding: 1.5rem;
-            background: rgba(26, 32, 44, 0.8);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .wallet-option:hover {
-            border-color: var(--accent);
-            background: rgba(0, 255, 157, 0.05);
-            transform: translateX(5px);
-        }
-
-        .wallet-icon {
-            font-size: 2.5rem;
-        }
-
-        /* User Dashboard */
-        .user-profile {
-            display: none;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.5rem 1rem;
-            background: rgba(26, 32, 44, 0.8);
-            border: 1px solid rgba(0, 255, 157, 0.3);
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .user-profile.active {
-            display: flex;
-        }
-
-        .user-profile:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
-        }
-
-        .user-avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .wallet-address {
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-
-        /* Quiz System */
-        .quiz-container {
-            background: rgba(26, 32, 44, 0.9);
-            border: 2px solid rgba(0, 255, 157, 0.3);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .unicorn-avatar {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, #ff00ff, #00ffff);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            animation: float 3s ease-in-out infinite;
-            box-shadow: 0 10px 30px rgba(0, 255, 157, 0.3);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .quiz-question {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border-left: 4px solid var(--accent);
-            margin: 1.5rem 0;
-        }
-
+        /* Quiz Specific Styles */
         .quiz-option {
-            padding: 1rem;
-            background: rgba(26, 32, 44, 0.6);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin: 0.8rem 0;
+            transition: all 0.2s;
+            border: 1px solid #e5e5e5;
         }
-
         .quiz-option:hover {
-            border-color: var(--accent);
-            background: rgba(0, 255, 157, 0.05);
-            transform: translateX(5px);
+            background-color: #f9f9f9;
+            border-color: #1a1a1a;
         }
-
         .quiz-option.selected {
-            border-color: var(--accent);
-            background: rgba(0, 255, 157, 0.15);
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border-color: #1a1a1a;
         }
-
         .quiz-option.correct {
             border-color: #22c55e;
-            background: rgba(34, 197, 94, 0.15);
+            background-color: rgba(34, 197, 94, 0.1);
+            color: #166534;
         }
-
         .quiz-option.incorrect {
             border-color: #ef4444;
-            background: rgba(239, 68, 68, 0.15);
-        }
-
-        .progress-bar-container {
-            background: rgba(0, 0, 0, 0.4);
-            height: 12px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 1rem 0;
-        }
-
-        .progress-bar {
-            background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary));
-            height: 100%;
-            transition: width 0.5s ease;
-            border-radius: 10px;
-        }
-
-        .reward-badge {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
-            color: #000;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* Airdrop Card with Interactive Badge */
-        .airdrop-card {
-            position: relative;
-            overflow: visible;
-        }
-
-        .interactive-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: linear-gradient(135deg, #ff00ff, #00ffff);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .status-active {
-            background: rgba(34, 197, 94, 0.2);
-            color: #22c55e;
-        }
-
-        .status-locked {
-            background: rgba(148, 163, 184, 0.2);
-            color: #94a3b8;
-        }
-
-        .status-completed {
-            background: rgba(99, 102, 241, 0.2);
-            color: #6366f1;
-        }
-
-        /* Tutorial Overlay */
-        .tutorial-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 3000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tutorial-overlay.active {
-            display: flex;
-        }
-
-        .tutorial-content {
-            max-width: 600px;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .tutorial-step {
-            background: rgba(26, 32, 44, 0.9);
-            border: 2px solid var(--accent);
-            border-radius: 20px;
-            padding: 2rem;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        @media (max-width: 768px) {
-            .hero { 
-                min-height: auto; 
-                padding: 100px 1rem 60px; 
-            }
-            .logo-font { 
-                font-size: 1.5rem; 
-            }
-            .modal-content {
-                padding: 1.5rem;
-            }
-            .unicorn-avatar {
-                width: 80px;
-                height: 80px;
-                font-size: 2.5rem;
-            }
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #991b1b;
         }
     </style>
 </head>
-<body>
+
+<body data-lang="en" class="bg-white text-black selection:bg-black selection:text-white">
+
     <!-- Navigation -->
-    <nav class="navbar fixed w-full z-50 px-4 py-3">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="#home" class="flex items-center gap-2">
-                <div class="logo-font text-2xl">AIF.GIFTS</div>
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 transition-all duration-300">
+        <div class="px-6 md:px-8 py-4 flex justify-between items-center max-w-[1920px] mx-auto">
+            <a href="#home" class="flex items-center gap-4 group">
+                <div class="flex flex-col leading-tight">
+                    <span class="text-lg font-bold tracking-tight">AIF.GIFTS</span>
+                    <span class="text-[0.6rem] font-mono uppercase tracking-wider text-gray-500 group-hover:text-black transition-colors">
+                        <span class="lang-en">Rewards Ecosystem</span>
+                        <span class="lang-zh">獎勵生態系統</span>
+                    </span>
+                </div>
             </a>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#home" class="nav-link hover:text-blue-400 transition" data-en="Home" data-zh="首頁">Home</a>
-                <a href="#airdrops" class="nav-link hover:text-blue-400 transition" data-en="Airdrops" data-zh="空投">Airdrops</a>
-                <a href="#rewards" class="nav-link hover:text-blue-400 transition" data-en="Rewards" data-zh="獎勵">Rewards</a>
-                <a href="#how-it-works" class="nav-link hover:text-blue-400 transition" data-en="How It Works" data-zh="使用指南">How It Works</a>
-                <button class="btn-secondary px-4 py-2 rounded-full text-sm" onclick="toggleLanguage()">中文/EN</button>
+            
+            <div class="hidden xl:flex items-center gap-1 text-[13px] font-medium tracking-wide">
+                <a href="#home" class="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors"><span class="lang-en">Home</span><span class="lang-zh">首頁</span></a>
+                <a href="#airdrops" class="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors"><span class="lang-en">Airdrops</span><span class="lang-zh">空投</span></a>
+                <a href="#rewards" class="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors"><span class="lang-en">Rewards</span><span class="lang-zh">獎勵</span></a>
+                <a href="#how-it-works" class="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors"><span class="lang-en">How It Works</span><span class="lang-zh">使用指南</span></a>
             </div>
-            <div class="flex items-center space-x-4">
-                <button id="connectWalletBtn" class="btn-primary px-5 py-2 rounded-full hidden md:block" onclick="openWalletModal()">
-                    <span data-en="Connect Wallet" data-zh="連接錢包">Connect Wallet</span>
+
+            <div class="flex items-center gap-4">
+                <button onclick="toggleLanguage()" class="text-xs font-mono border border-gray-200 px-3 py-1.5 rounded-full hover:bg-black hover:text-white transition-all uppercase">
+                    <span class="lang-en">繁中</span><span class="lang-zh">EN</span>
                 </button>
-                <div id="userProfile" class="user-profile">
-                    <div class="user-avatar" id="userAvatar">U</div>
-                    <div class="wallet-address" id="walletAddress">0x0000...0000</div>
-                    <button onclick="logout()" class="text-xs text-gray-400 hover:text-white">
+                
+                <button id="connectWalletBtn" onclick="openWalletModal()" class="hidden md:flex bg-black text-white text-[13px] font-medium px-6 py-3 rounded-full btn-hover items-center gap-2">
+                    <span class="lang-en">Connect Wallet</span><span class="lang-zh">連接錢包</span>
+                </button>
+
+                <div id="userProfile" class="hidden items-center gap-3 px-4 py-2 border border-gray-200 rounded-full">
+                    <div class="w-6 h-6 bg-black text-white rounded-full flex items-center justify-center text-xs font-bold" id="userAvatar">U</div>
+                    <div class="font-mono text-xs" id="walletAddress">0x00...0000</div>
+                    <button onclick="logout()" class="text-gray-400 hover:text-red-500 transition-colors">
                         <i class="fas fa-sign-out-alt"></i>
                     </button>
                 </div>
-                <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
+
+                <!-- Hamburger Menu Button -->
+                <button class="xl:hidden text-2xl px-2" onclick="toggleMobileMenu()">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="absolute top-5 right-5 text-xl cursor-pointer" onclick="closeMobileMenu()">
-            <i class="fas fa-times"></i>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu fixed top-0 right-0 w-full h-screen bg-white z-[60] p-6 overflow-y-auto" id="mobileMenu">
+        <div class="flex justify-between items-center mb-12">
+            <span class="text-lg font-bold">AIF.GIFTS</span>
+            <button onclick="closeMobileMenu()" class="text-2xl w-10 h-10 flex items-center justify-center border border-gray-100 rounded-full hover:bg-gray-100">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-        <div style="padding-top:50px;">
-            <a href="#home" class="block py-3 px-4 hover:bg-gray-800 rounded-lg transition" onclick="closeMobileMenu()" data-en="Home" data-zh="首頁">Home</a>
-            <a href="#airdrops" class="block py-3 px-4 hover:bg-gray-800 rounded-lg transition" onclick="closeMobileMenu()" data-en="Airdrops" data-zh="空投">Airdrops</a>
-            <a href="#rewards" class="block py-3 px-4 hover:bg-gray-800 rounded-lg transition" onclick="closeMobileMenu()" data-en="Rewards" data-zh="獎勵">Rewards</a>
-            <a href="#how-it-works" class="block py-3 px-4 hover:bg-gray-800 rounded-lg transition" onclick="closeMobileMenu()" data-en="How It Works" data-zh="使用指南">How It Works</a>
-            <button class="btn-primary w-full py-3 rounded-lg mt-4" onclick="openWalletModal(); closeMobileMenu();">
-                <span data-en="Connect Wallet" data-zh="連接錢包">Connect Wallet</span>
+        <div class="flex flex-col space-y-6 text-2xl font-bold tracking-tight">
+            <a href="#home" onclick="closeMobileMenu()"><span class="lang-en">Home</span><span class="lang-zh">首頁</span></a>
+            <a href="#airdrops" onclick="closeMobileMenu()"><span class="lang-en">Airdrops</span><span class="lang-zh">空投</span></a>
+            <a href="#rewards" onclick="closeMobileMenu()"><span class="lang-en">Rewards</span><span class="lang-zh">獎勵</span></a>
+            <a href="#how-it-works" onclick="closeMobileMenu()"><span class="lang-en">How It Works</span><span class="lang-zh">使用指南</span></a>
+        </div>
+        <div class="mt-12 pt-12 border-t border-gray-100">
+            <button onclick="openWalletModal(); closeMobileMenu();" class="w-full bg-black text-white py-4 rounded-full font-bold text-lg mb-4">
+                <span class="lang-en">Connect Wallet</span><span class="lang-zh">連接錢包</span>
             </button>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-bg"></div>
-        <div class="container mx-auto px-4 hero-content">
-            <div class="text-center animate-fade-in">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6">
-                    <span class="gradient-text" data-en="Your Gateway to AIF Rewards" data-zh="您的AIF獎勵入口">Your Gateway to AIF Rewards</span>
-                </h1>
-                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto" data-en="Learn, interact with AI Unicorn, and earn AIF token airdrops. Answer 10 questions to unlock exclusive rewards from the Hong Kong AI International Film Festival ecosystem." data-zh="學習、與AI獨角獸互動，獲得AIF代幣空投。回答10個問題即可解鎖來自香港AI國際電影節生態系統的獨家獎勵。">
-                    Learn, interact with AI Unicorn, and earn AIF token airdrops. Answer 10 questions to unlock exclusive rewards from the Hong Kong AI International Film Festival ecosystem.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="btn-primary px-8 py-4 rounded-full text-lg font-bold" onclick="openWalletModal()">
-                        <i class="fas fa-rocket mr-2"></i>
-                        <span data-en="Start Earning Now" data-zh="立即開始賺取">Start Earning Now</span>
-                    </button>
-                    <button class="btn-secondary px-8 py-4 rounded-full text-lg font-bold" onclick="showTutorial()">
-                        <i class="fas fa-graduation-cap mr-2"></i>
-                        <span data-en="Learn How" data-zh="了解方式">Learn How</span>
-                    </button>
+    <!-- Header / Hero Section -->
+    <header id="home" class="relative pt-32 pb-20 px-6 md:px-8 max-w-[1920px] mx-auto border-b border-gray-200">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div class="md:col-span-8">
+                <div class="mb-6 inline-flex items-center gap-2 border border-gray-200 rounded-full px-3 py-1 bg-gray-50">
+                    <span class="w-2 h-2 rounded-full bg-black animate-pulse"></span>
+                    <span class="text-[10px] uppercase tracking-widest font-mono font-medium text-gray-500">
+                        <span class="lang-en">Interactive Learning System</span><span class="lang-zh">互動學習系統</span>
+                    </span>
                 </div>
                 
-                <!-- Stats -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 max-w-4xl mx-auto">
-                    <div class="card p-4">
-                        <div class="text-3xl font-bold gradient-text">10B</div>
-                        <div class="text-sm text-gray-400" data-en="AIF Total Supply" data-zh="AIF總供應量">AIF Total Supply</div>
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] mb-10 text-black">
+                    <span class="lang-en">Your Gateway <br> to AIF Rewards.</span>
+                    <span class="lang-zh">您的 AIF <br> 獎勵入口</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed font-light">
+                    <span class="lang-en">Learn, interact with AI Unicorn, and earn AIF token airdrops. Answer 10 questions to unlock exclusive rewards from the Hong Kong AI International Film Festival ecosystem.</span>
+                    <span class="lang-zh">學習、與AI獨角獸互動，獲得AIF代幣空投。回答10個問題即可解鎖來自香港AI國際電影節生態系統的獨家獎勵。</span>
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                    <button class="bg-black text-white px-8 py-4 rounded-full text-sm font-bold btn-hover" onclick="openWalletModal()">
+                        <i class="fas fa-rocket mr-2"></i>
+                        <span class="lang-en">Start Earning Now</span><span class="lang-zh">立即開始賺取</span>
+                    </button>
+                    <button class="border border-gray-200 px-8 py-4 rounded-full text-sm font-bold btn-hover hover:bg-gray-50" onclick="showTutorial()">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        <span class="lang-en">Learn How</span><span class="lang-zh">了解方式</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="md:col-span-4 flex flex-col justify-end">
+                <div class="grid grid-cols-2 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden">
+                    <div class="bg-white p-6 hover:bg-gray-50 transition-colors">
+                        <span class="block text-3xl font-bold mb-1">10B</span>
+                        <span class="text-[10px] uppercase font-mono text-gray-400"><span class="lang-en">Total Supply</span><span class="lang-zh">AIF總供應量</span></span>
                     </div>
-                    <div class="card p-4">
-                        <div class="text-3xl font-bold gradient-text">50+</div>
-                        <div class="text-sm text-gray-400" data-en="Film Projects" data-zh="電影項目">Film Projects</div>
+                    <div class="bg-white p-6 hover:bg-gray-50 transition-colors">
+                        <span class="block text-3xl font-bold mb-1">50+</span>
+                        <span class="text-[10px] uppercase font-mono text-gray-400"><span class="lang-en">Projects</span><span class="lang-zh">電影項目</span></span>
                     </div>
-                    <div class="card p-4">
-                        <div class="text-3xl font-bold gradient-text">$3M+</div>
-                        <div class="text-sm text-gray-400" data-en="Rewards Pool" data-zh="獎勵池">Rewards Pool</div>
+                    <div class="bg-white p-6 hover:bg-gray-50 transition-colors">
+                        <span class="block text-3xl font-bold mb-1">$3M+</span>
+                        <span class="text-[10px] uppercase font-mono text-gray-400"><span class="lang-en">Pool</span><span class="lang-zh">獎勵池</span></span>
                     </div>
-                    <div class="card p-4">
-                        <div class="text-3xl font-bold gradient-text">100K+</div>
-                        <div class="text-sm text-gray-400" data-en="Users" data-zh="用戶">Users</div>
+                    <div class="bg-white p-6 hover:bg-gray-50 transition-colors">
+                        <span class="block text-3xl font-bold mb-1">100K+</span>
+                        <span class="text-[10px] uppercase font-mono text-gray-400"><span class="lang-en">Users</span><span class="lang-zh">用戶</span></span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
+
+    <!-- Marquee -->
+    <div class="border-b border-gray-200 py-6 overflow-hidden bg-gray-50">
+        <div class="whitespace-nowrap animate-marquee flex items-center gap-12 opacity-80 text-xs font-mono font-medium uppercase tracking-widest text-black">
+            <span>Learn to Earn</span> <span>✦</span> <span>AI Unicorn Interactive</span> <span>✦</span> <span>Web3 Rewards</span> <span>✦</span> <span>Token Airdrops</span> <span>✦</span>
+            <span>邊學邊賺</span> <span>✦</span> <span>AI獨角獸互動</span> <span>✦</span> <span>Web3 獎勵</span> <span>✦</span> <span>代幣空投</span> <span>✦</span>
+            <span>Learn to Earn</span> <span>✦</span> <span>AI Unicorn Interactive</span> <span>✦</span> <span>Web3 Rewards</span> <span>✦</span> <span>Token Airdrops</span> <span>✦</span>
+        </div>
+    </div>
 
     <!-- How It Works Section -->
-    <section class="py-20 bg-gradient-to-b from-transparent to-gray-900" id="how-it-works">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-text" data-en="How to Earn Airdrops" data-zh="如何賺取空投">How to Earn Airdrops</h2>
-                <p class="text-lg text-gray-300 max-w-2xl mx-auto" data-en="Simple 4-step process to claim your rewards through interactive learning" data-zh="通過互動學習領取獎勵的簡單4步流程">
-                    Simple 4-step process to claim your rewards through interactive learning
+    <section id="how-it-works" class="py-24 px-6 md:px-8 max-w-[1920px] mx-auto border-b border-gray-200">
+        <div class="flex justify-between items-end mb-12 reveal-text">
+            <div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight"><span class="lang-en">How It Works</span><span class="lang-zh">如何賺取空投</span></h2>
+                <p class="text-gray-500 font-light"><span class="lang-en">Simple 4-step process to claim your rewards</span><span class="lang-zh">通過互動學習領取獎勵的簡單4步流程</span></p>
+            </div>
+            <span class="text-xs font-mono text-gray-400 hidden md:block">Process Guide</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 reveal-text">
+            <!-- Step 1 -->
+            <div class="p-6 bg-white rounded-lg border border-gray-200 hover:border-black transition-colors group">
+                <div class="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 font-mono">1</div>
+                <h3 class="text-lg font-bold mb-2 group-hover:text-gray-700"><span class="lang-en">Connect Wallet</span><span class="lang-zh">連接錢包</span></h3>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    <span class="lang-en">Link your Web3 wallet (MetaMask, WalletConnect, etc.)</span><span class="lang-zh">連接您的Web3錢包（MetaMask、WalletConnect等）</span>
                 </p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
-                <div class="card p-6 text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl font-bold">
-                        1
-                    </div>
-                    <h3 class="text-xl font-bold mb-2" data-en="Connect Wallet" data-zh="連接錢包">Connect Wallet</h3>
-                    <p class="text-gray-400 text-sm" data-en="Link your Web3 wallet (MetaMask, WalletConnect, etc.)" data-zh="連接您的Web3錢包（MetaMask、WalletConnect等）">
-                        Link your Web3 wallet (MetaMask, WalletConnect, etc.)
-                    </p>
-                </div>
-
-                <div class="card p-6 text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-2xl font-bold">
-                        2
-                    </div>
-                    <h3 class="text-xl font-bold mb-2" data-en="Choose Airdrop" data-zh="選擇空投">Choose Airdrop</h3>
-                    <p class="text-gray-400 text-sm" data-en="Select an airdrop campaign you want to participate in" data-zh="選擇您想參與的空投活動">
-                        Select an airdrop campaign you want to participate in
-                    </p>
-                </div>
-
-                <div class="card p-6 text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-pink-500 to-red-600 rounded-full flex items-center justify-center text-2xl font-bold">
-                        3
-                    </div>
-                    <h3 class="text-xl font-bold mb-2" data-en="Quiz with Unicorn" data-zh="與獨角獸答題">Quiz with Unicorn</h3>
-                    <p class="text-gray-400 text-sm" data-en="Answer 10 questions in conversation with AI Unicorn" data-zh="與AI獨角獸對話回答10個問題">
-                        Answer 10 questions in conversation with AI Unicorn
-                    </p>
-                </div>
-
-                <div class="card p-6 text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-green-500 to-teal-600 rounded-full flex items-center justify-center text-2xl font-bold">
-                        4
-                    </div>
-                    <h3 class="text-xl font-bold mb-2" data-en="Claim Rewards" data-zh="領取獎勵">Claim Rewards</h3>
-                    <p class="text-gray-400 text-sm" data-en="Pass the quiz and instantly claim your airdrop tokens" data-zh="通過測驗並立即領取您的空投代幣">
-                        Pass the quiz and instantly claim your airdrop tokens
-                    </p>
-                </div>
-            </div>
-
-            <!-- Interactive Learning Feature -->
-            <div class="card p-8 max-w-4xl mx-auto">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="text-5xl">🦄</div>
-                    <div>
-                        <h3 class="text-2xl font-bold gradient-text" data-en="Meet AI Unicorn" data-zh="認識AI獨角獸">Meet AI Unicorn</h3>
-                        <p class="text-gray-400" data-en="Your interactive learning companion" data-zh="您的互動學習伴侶">Your interactive learning companion</p>
-                    </div>
-                </div>
-                <p class="text-gray-300 mb-4" data-en="AI Unicorn is your friendly guide through the AIF ecosystem. Through interactive conversations and questions, you'll learn about projects, tokens, and opportunities while earning rewards. Each correct answer brings you closer to claiming your airdrop!" data-zh="AI獨角獸是您在AIF生態系統中的友好嚮導。通過互動對話和問題，您將了解項目、代幣和機會，同時獲得獎勵。每個正確答案都會讓您更接近領取空投！">
-                    AI Unicorn is your friendly guide through the AIF ecosystem. Through interactive conversations and questions, you'll learn about projects, tokens, and opportunities while earning rewards. Each correct answer brings you closer to claiming your airdrop!
+            <!-- Step 2 -->
+            <div class="p-6 bg-white rounded-lg border border-gray-200 hover:border-black transition-colors group">
+                <div class="w-12 h-12 bg-gray-100 text-black rounded-full flex items-center justify-center text-xl font-bold mb-6 font-mono group-hover:bg-black group-hover:text-white transition-colors">2</div>
+                <h3 class="text-lg font-bold mb-2 group-hover:text-gray-700"><span class="lang-en">Choose Airdrop</span><span class="lang-zh">選擇空投</span></h3>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    <span class="lang-en">Select an airdrop campaign you want to participate in</span><span class="lang-zh">選擇您想參與的空投活動</span>
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                    <div class="bg-black bg-opacity-40 p-4 rounded-lg">
-                        <div class="text-accent font-bold mb-2" data-en="✓ Educational" data-zh="✓ 教育性">✓ Educational</div>
-                        <p class="text-sm text-gray-400" data-en="Learn while you earn" data-zh="邊學邊賺">Learn while you earn</p>
-                    </div>
-                    <div class="bg-black bg-opacity-40 p-4 rounded-lg">
-                        <div class="text-accent font-bold mb-2" data-en="✓ Interactive" data-zh="✓ 互動性">✓ Interactive</div>
-                        <p class="text-sm text-gray-400" data-en="Engaging Q&A format" data-zh="引人入勝的問答形式">Engaging Q&A format</p>
-                    </div>
-                    <div class="bg-black bg-opacity-40 p-4 rounded-lg">
-                        <div class="text-accent font-bold mb-2" data-en="✓ Rewarding" data-zh="✓ 獎勵性">✓ Rewarding</div>
-                        <p class="text-sm text-gray-400" data-en="Instant token rewards" data-zh="即時代幣獎勵">Instant token rewards</p>
+            </div>
+            <!-- Step 3 -->
+            <div class="p-6 bg-white rounded-lg border border-gray-200 hover:border-black transition-colors group">
+                <div class="w-12 h-12 bg-gray-100 text-black rounded-full flex items-center justify-center text-xl font-bold mb-6 font-mono group-hover:bg-black group-hover:text-white transition-colors">3</div>
+                <h3 class="text-lg font-bold mb-2 group-hover:text-gray-700"><span class="lang-en">Quiz with Unicorn</span><span class="lang-zh">與獨角獸答題</span></h3>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    <span class="lang-en">Answer 10 questions in conversation with AI Unicorn</span><span class="lang-zh">與AI獨角獸對話回答10個問題</span>
+                </p>
+            </div>
+            <!-- Step 4 -->
+            <div class="p-6 bg-white rounded-lg border border-gray-200 hover:border-black transition-colors group">
+                <div class="w-12 h-12 bg-gray-100 text-black rounded-full flex items-center justify-center text-xl font-bold mb-6 font-mono group-hover:bg-black group-hover:text-white transition-colors">4</div>
+                <h3 class="text-lg font-bold mb-2 group-hover:text-gray-700"><span class="lang-en">Claim Rewards</span><span class="lang-zh">領取獎勵</span></h3>
+                <p class="text-sm text-gray-500 leading-relaxed">
+                    <span class="lang-en">Pass the quiz and instantly claim your airdrop tokens</span><span class="lang-zh">通過測驗並立即領取您的空投代幣</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Unicorn Feature -->
+        <div class="mt-12 p-10 bg-gray-50 rounded-2xl border border-gray-200 reveal-text">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="text-6xl md:text-8xl">🦄</div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold mb-2"><span class="lang-en">Meet AI Unicorn</span><span class="lang-zh">認識AI獨角獸</span></h3>
+                    <p class="text-gray-600 mb-6 font-light">
+                        <span class="lang-en">AI Unicorn is your friendly guide through the AIF ecosystem. Through interactive conversations and questions, you'll learn about projects, tokens, and opportunities while earning rewards.</span>
+                        <span class="lang-zh">AI獨角獸是您在AIF生態系統中的友好嚮導。通過互動對話和問題，您將了解項目、代幣和機會，同時獲得獎勵。</span>
+                    </p>
+                    <div class="flex flex-wrap gap-4 font-mono text-xs uppercase tracking-wider">
+                        <span class="bg-white px-3 py-1 rounded border border-gray-200">Educational</span>
+                        <span class="bg-white px-3 py-1 rounded border border-gray-200">Interactive</span>
+                        <span class="bg-white px-3 py-1 rounded border border-gray-200">Rewarding</span>
                     </div>
                 </div>
             </div>
@@ -669,331 +346,246 @@
     </section>
 
     <!-- Airdrops Section -->
-    <section class="py-20" id="airdrops">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-text" data-en="Available Airdrops" data-zh="可用空投">Available Airdrops</h2>
-                <p class="text-lg text-gray-300 max-w-2xl mx-auto" data-en="Complete interactive quizzes to unlock these exclusive airdrops" data-zh="完成互動測驗以解鎖這些獨家空投">
-                    Complete interactive quizzes to unlock these exclusive airdrops
-                </p>
+    <section id="airdrops" class="py-24 px-6 md:px-8 max-w-[1920px] mx-auto bg-gray-50">
+        <div class="flex justify-between items-end mb-12 reveal-text">
+            <h2 class="text-3xl font-bold tracking-tight"><span class="lang-en">Available Airdrops</span><span class="lang-zh">可用空投</span></h2>
+            <span class="text-xs font-mono text-gray-400">Complete quizzes to unlock</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Card 1 -->
+            <div class="group bg-white border border-gray-200 p-8 rounded-xl hover:shadow-2xl hover:border-black/20 transition-all duration-300 reveal-text">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl">🎁</div>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-[10px] font-bold font-mono uppercase">Active</span>
+                </div>
+                <h3 class="text-xl font-bold mb-1">AIF Token Airdrop</h3>
+                <div class="text-3xl font-bold font-mono mb-6">500M AIF</div>
+                
+                <div class="space-y-3 mb-8 border-t border-gray-100 pt-6">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Reward/User</span><span class="lang-zh">每用戶獎勵</span></span>
+                        <span class="font-bold font-mono">1,000 AIF</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Difficulty</span><span class="lang-zh">難度</span></span>
+                        <span>⭐⭐⭐</span>
+                    </div>
+                </div>
+                <button class="w-full bg-black text-white py-3 rounded-lg font-bold text-sm btn-hover" onclick="startQuiz('aif-airdrop')">
+                    <span class="lang-en">Start Quiz</span><span class="lang-zh">開始測驗</span>
+                </button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- AIF Token Airdrop -->
-                <div class="card airdrop-card p-0 overflow-hidden">
-                    <div class="interactive-badge" data-en="🎯 Interactive" data-zh="🎯 互動">🎯 Interactive</div>
-                    <div class="bg-gradient-to-br from-blue-600 to-purple-700 p-6 text-center">
-                        <div class="text-4xl mb-2">🎁</div>
-                        <h3 class="text-2xl font-bold mb-2">AIF Token Airdrop</h3>
-                        <div class="text-3xl font-bold">500M AIF</div>
+            <!-- Card 2 -->
+            <div class="group bg-white border border-gray-200 p-8 rounded-xl hover:shadow-2xl hover:border-black/20 transition-all duration-300 reveal-text delay-100">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl">🎬</div>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-[10px] font-bold font-mono uppercase">Active</span>
+                </div>
+                <h3 class="text-xl font-bold mb-1">Genesis Film Token</h3>
+                <div class="text-3xl font-bold font-mono mb-6">10M FILM</div>
+                
+                <div class="space-y-3 mb-8 border-t border-gray-100 pt-6">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Reward/User</span><span class="lang-zh">每用戶獎勵</span></span>
+                        <span class="font-bold font-mono">500 FILM</span>
                     </div>
-                    <div class="p-6">
-                        <div class="mb-4">
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Questions" data-zh="問題">Questions</span>
-                                <span class="font-bold">10 Questions</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Difficulty" data-zh="難度">Difficulty</span>
-                                <span class="text-yellow-400">⭐⭐⭐</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Reward per user" data-zh="每用戶獎勵">Reward per user</span>
-                                <span class="text-accent font-bold">1,000 AIF</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-400" data-en="Status" data-zh="狀態">Status</span>
-                                <span class="status-badge status-active" data-en="Active" data-zh="進行中">Active</span>
-                            </div>
-                        </div>
-                        <button class="btn-accent w-full py-3 rounded-lg font-bold" onclick="startQuiz('aif-airdrop')">
-                            <i class="fas fa-play mr-2"></i>
-                            <span data-en="Start Quiz" data-zh="開始測驗">Start Quiz</span>
-                        </button>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Difficulty</span><span class="lang-zh">難度</span></span>
+                        <span>⭐⭐</span>
                     </div>
                 </div>
-
-                <!-- Genesis Film Project -->
-                <div class="card airdrop-card p-0 overflow-hidden">
-                    <div class="interactive-badge" data-en="🎯 Interactive" data-zh="🎯 互動">🎯 Interactive</div>
-                    <div class="bg-gradient-to-br from-purple-600 to-pink-700 p-6 text-center">
-                        <div class="text-4xl mb-2">🎬</div>
-                        <h3 class="text-2xl font-bold mb-2">Genesis Film Token</h3>
-                        <div class="text-3xl font-bold">10M FILM</div>
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-4">
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Questions" data-zh="問題">Questions</span>
-                                <span class="font-bold">10 Questions</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Difficulty" data-zh="難度">Difficulty</span>
-                                <span class="text-yellow-400">⭐⭐</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Reward per user" data-zh="每用戶獎勵">Reward per user</span>
-                                <span class="text-accent font-bold">500 FILM</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-400" data-en="Status" data-zh="狀態">Status</span>
-                                <span class="status-badge status-active" data-en="Active" data-zh="進行中">Active</span>
-                            </div>
-                        </div>
-                        <button class="btn-accent w-full py-3 rounded-lg font-bold" onclick="startQuiz('genesis-film')">
-                            <i class="fas fa-play mr-2"></i>
-                            <span data-en="Start Quiz" data-zh="開始測驗">Start Quiz</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- HKAIIFF Special -->
-                <div class="card airdrop-card p-0 overflow-hidden">
-                    <div class="interactive-badge" data-en="🎯 Interactive" data-zh="🎯 互動">🎯 Interactive</div>
-                    <div class="bg-gradient-to-br from-green-600 to-teal-700 p-6 text-center">
-                        <div class="text-4xl mb-2">🏆</div>
-                        <h3 class="text-2xl font-bold mb-2">HKAIIFF Special</h3>
-                        <div class="text-3xl font-bold">50M AIF</div>
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-4">
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Questions" data-zh="問題">Questions</span>
-                                <span class="font-bold">10 Questions</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Difficulty" data-zh="難度">Difficulty</span>
-                                <span class="text-yellow-400">⭐⭐⭐⭐</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Reward per user" data-zh="每用戶獎勵">Reward per user</span>
-                                <span class="text-accent font-bold">2,000 AIF</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-400" data-en="Status" data-zh="狀態">Status</span>
-                                <span class="status-badge status-locked" data-en="Locked" data-zh="鎖定">Locked</span>
-                            </div>
-                        </div>
-                        <button class="btn-secondary w-full py-3 rounded-lg font-bold opacity-50 cursor-not-allowed" disabled>
-                            <i class="fas fa-lock mr-2"></i>
-                            <span data-en="Complete Others First" data-zh="先完成其他">Complete Others First</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Partner Campaign 1 -->
-                <div class="card airdrop-card p-0 overflow-hidden">
-                    <div class="interactive-badge" data-en="🎯 Interactive" data-zh="🎯 互動">🎯 Interactive</div>
-                    <div class="bg-gradient-to-br from-orange-600 to-red-700 p-6 text-center">
-                        <div class="text-4xl mb-2">🤝</div>
-                        <h3 class="text-2xl font-bold mb-2">Partner Brand X</h3>
-                        <div class="text-3xl font-bold">5M BRAND</div>
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-4">
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Questions" data-zh="問題">Questions</span>
-                                <span class="font-bold">10 Questions</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Difficulty" data-zh="難度">Difficulty</span>
-                                <span class="text-yellow-400">⭐⭐</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Reward per user" data-zh="每用戶獎勵">Reward per user</span>
-                                <span class="text-accent font-bold">100 BRAND</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-400" data-en="Status" data-zh="狀態">Status</span>
-                                <span class="status-badge status-active" data-en="Active" data-zh="進行中">Active</span>
-                            </div>
-                        </div>
-                        <button class="btn-accent w-full py-3 rounded-lg font-bold" onclick="startQuiz('partner-brand')">
-                            <i class="fas fa-play mr-2"></i>
-                            <span data-en="Start Quiz" data-zh="開始測驗">Start Quiz</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 404.world Metaverse -->
-                <div class="card airdrop-card p-0 overflow-hidden">
-                    <div class="interactive-badge" data-en="🎯 Interactive" data-zh="🎯 互動">🎯 Interactive</div>
-                    <div class="bg-gradient-to-br from-indigo-600 to-blue-700 p-6 text-center">
-                        <div class="text-4xl mb-2">🌐</div>
-                        <h3 class="text-2xl font-bold mb-2">404.world Items</h3>
-                        <div class="text-3xl font-bold">Digital Assets</div>
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-4">
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Questions" data-zh="問題">Questions</span>
-                                <span class="font-bold">10 Questions</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Difficulty" data-zh="難度">Difficulty</span>
-                                <span class="text-yellow-400">⭐⭐⭐</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Reward per user" data-zh="每用戶獎勵">Reward per user</span>
-                                <span class="text-accent font-bold">5 NFTs</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-400" data-en="Status" data-zh="狀態">Status</span>
-                                <span class="status-badge status-active" data-en="Active" data-zh="進行中">Active</span>
-                            </div>
-                        </div>
-                        <button class="btn-accent w-full py-3 rounded-lg font-bold" onclick="startQuiz('404world')">
-                            <i class="fas fa-play mr-2"></i>
-                            <span data-en="Start Quiz" data-zh="開始測驗">Start Quiz</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- AIF Academy Course -->
-                <div class="card airdrop-card p-0 overflow-hidden">
-                    <div class="interactive-badge" data-en="🎯 Interactive" data-zh="🎯 互動">🎯 Interactive</div>
-                    <div class="bg-gradient-to-br from-yellow-600 to-orange-700 p-6 text-center">
-                        <div class="text-4xl mb-2">📚</div>
-                        <h3 class="text-2xl font-bold mb-2">Academy Access</h3>
-                        <div class="text-3xl font-bold">Premium Course</div>
-                    </div>
-                    <div class="p-6">
-                        <div class="mb-4">
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Questions" data-zh="問題">Questions</span>
-                                <span class="font-bold">10 Questions</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Difficulty" data-zh="難度">Difficulty</span>
-                                <span class="text-yellow-400">⭐⭐</span>
-                            </div>
-                            <div class="flex justify-between text-sm mb-2">
-                                <span class="text-gray-400" data-en="Reward per user" data-zh="每用戶獎勵">Reward per user</span>
-                                <span class="text-accent font-bold">FREE Access</span>
-                            </div>
-                            <div class="flex justify-between text-sm">
-                                <span class="text-gray-400" data-en="Status" data-zh="狀態">Status</span>
-                                <span class="status-badge status-active" data-en="Active" data-zh="進行中">Active</span>
-                            </div>
-                        </div>
-                        <button class="btn-accent w-full py-3 rounded-lg font-bold" onclick="startQuiz('academy')">
-                            <i class="fas fa-play mr-2"></i>
-                            <span data-en="Start Quiz" data-zh="開始測驗">Start Quiz</span>
-                        </button>
-                    </div>
-                </div>
+                <button class="w-full bg-black text-white py-3 rounded-lg font-bold text-sm btn-hover" onclick="startQuiz('genesis-film')">
+                    <span class="lang-en">Start Quiz</span><span class="lang-zh">開始測驗</span>
+                </button>
             </div>
+
+            <!-- Card 3 (Locked) -->
+            <div class="group bg-white border border-gray-200 p-8 rounded-xl opacity-75 hover:opacity-100 transition-all duration-300 reveal-text delay-200">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl">🏆</div>
+                    <span class="px-2 py-1 bg-gray-100 text-gray-500 rounded text-[10px] font-bold font-mono uppercase">Locked</span>
+                </div>
+                <h3 class="text-xl font-bold mb-1">HKAIIFF Special</h3>
+                <div class="text-3xl font-bold font-mono mb-6">50M AIF</div>
+                
+                <div class="space-y-3 mb-8 border-t border-gray-100 pt-6">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Reward/User</span><span class="lang-zh">每用戶獎勵</span></span>
+                        <span class="font-bold font-mono">2,000 AIF</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Difficulty</span><span class="lang-zh">難度</span></span>
+                        <span>⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+                <button class="w-full bg-gray-100 text-gray-400 py-3 rounded-lg font-bold text-sm cursor-not-allowed" disabled>
+                    <span class="lang-en">Complete Others First</span><span class="lang-zh">先完成其他</span>
+                </button>
+            </div>
+
+             <!-- Card 4 -->
+             <div class="group bg-white border border-gray-200 p-8 rounded-xl hover:shadow-2xl hover:border-black/20 transition-all duration-300 reveal-text">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl">🤝</div>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-[10px] font-bold font-mono uppercase">Active</span>
+                </div>
+                <h3 class="text-xl font-bold mb-1">Partner Brand X</h3>
+                <div class="text-3xl font-bold font-mono mb-6">5M BRAND</div>
+                
+                <div class="space-y-3 mb-8 border-t border-gray-100 pt-6">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Reward/User</span><span class="lang-zh">每用戶獎勵</span></span>
+                        <span class="font-bold font-mono">100 BRAND</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Difficulty</span><span class="lang-zh">難度</span></span>
+                        <span>⭐⭐</span>
+                    </div>
+                </div>
+                <button class="w-full bg-black text-white py-3 rounded-lg font-bold text-sm btn-hover" onclick="startQuiz('partner-brand')">
+                    <span class="lang-en">Start Quiz</span><span class="lang-zh">開始測驗</span>
+                </button>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="group bg-white border border-gray-200 p-8 rounded-xl hover:shadow-2xl hover:border-black/20 transition-all duration-300 reveal-text">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl">🌐</div>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-[10px] font-bold font-mono uppercase">Active</span>
+                </div>
+                <h3 class="text-xl font-bold mb-1">404.world Items</h3>
+                <div class="text-3xl font-bold font-mono mb-6">Digital Assets</div>
+                
+                <div class="space-y-3 mb-8 border-t border-gray-100 pt-6">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Reward/User</span><span class="lang-zh">每用戶獎勵</span></span>
+                        <span class="font-bold font-mono">5 NFTs</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Difficulty</span><span class="lang-zh">難度</span></span>
+                        <span>⭐⭐⭐</span>
+                    </div>
+                </div>
+                <button class="w-full bg-black text-white py-3 rounded-lg font-bold text-sm btn-hover" onclick="startQuiz('404world')">
+                    <span class="lang-en">Start Quiz</span><span class="lang-zh">開始測驗</span>
+                </button>
+            </div>
+
+             <!-- Card 6 -->
+             <div class="group bg-white border border-gray-200 p-8 rounded-xl hover:shadow-2xl hover:border-black/20 transition-all duration-300 reveal-text">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="text-4xl">📚</div>
+                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-[10px] font-bold font-mono uppercase">Active</span>
+                </div>
+                <h3 class="text-xl font-bold mb-1">Academy Access</h3>
+                <div class="text-3xl font-bold font-mono mb-6">Premium Course</div>
+                
+                <div class="space-y-3 mb-8 border-t border-gray-100 pt-6">
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Reward/User</span><span class="lang-zh">每用戶獎勵</span></span>
+                        <span class="font-bold font-mono">FREE Access</span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                        <span class="text-gray-400"><span class="lang-en">Difficulty</span><span class="lang-zh">難度</span></span>
+                        <span>⭐⭐</span>
+                    </div>
+                </div>
+                <button class="w-full bg-black text-white py-3 rounded-lg font-bold text-sm btn-hover" onclick="startQuiz('academy')">
+                    <span class="lang-en">Start Quiz</span><span class="lang-zh">開始測驗</span>
+                </button>
+            </div>
+
         </div>
     </section>
 
     <!-- Rewards Section -->
-    <section class="py-20 bg-gradient-to-b from-gray-900 to-transparent" id="rewards">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-text" data-en="Exclusive Rewards" data-zh="獨家獎勵">Exclusive Rewards</h2>
-                <p class="text-lg text-gray-300 max-w-2xl mx-auto" data-en="Redeem your earned tokens for premium merchandise and benefits" data-zh="用您獲得的代幣兌換優質周邊和權益">
-                    Redeem your earned tokens for premium merchandise and benefits
-                </p>
+    <section id="rewards" class="py-24 px-6 md:px-8 max-w-[1920px] mx-auto border-t border-gray-200">
+        <div class="flex justify-between items-end mb-12 reveal-text">
+            <div>
+                <h2 class="text-3xl font-bold mb-4 tracking-tight"><span class="lang-en">Exclusive Rewards</span><span class="lang-zh">獨家獎勵</span></h2>
+                <p class="text-gray-500 font-light"><span class="lang-en">Redeem tokens for merchandise</span><span class="lang-zh">用您獲得的代幣兌換優質周邊和權益</span></p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal-text">
+            <!-- Reward 1 -->
+            <div class="border border-gray-200 rounded-lg p-8 text-center hover:bg-gray-50 transition-colors">
+                <div class="text-6xl mb-6">🎬</div>
+                <h3 class="text-xl font-bold mb-2"><span class="lang-en">Limited Edition Poster</span><span class="lang-zh">限量版海報</span></h3>
+                <p class="text-sm text-gray-500 mb-6"><span class="lang-en">Exclusive signed poster from Genesis Film Project</span><span class="lang-zh">Genesis電影項目獨家簽名海報</span></p>
+                <button class="bg-black text-white px-6 py-2 rounded-full text-sm font-bold w-full mb-2">
+                    <span class="lang-en">Redeem</span><span class="lang-zh">兌換</span>
+                </button>
+                <div class="text-xs font-mono font-bold">100 AIF</div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="card p-0 overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-6xl">
-                        🎬
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="Limited Edition Poster" data-zh="限量版海報">Limited Edition Poster</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-en="Exclusive signed poster from Genesis Film Project" data-zh="Genesis電影項目獨家簽名海報">
-                            Exclusive signed poster from Genesis Film Project
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-accent">100 AIF</span>
-                            <button class="btn-primary px-4 py-2 rounded-lg" data-en="Redeem" data-zh="兌換">Redeem</button>
-                        </div>
-                    </div>
-                </div>
+            <!-- Reward 2 -->
+            <div class="border border-gray-200 rounded-lg p-8 text-center hover:bg-gray-50 transition-colors">
+                <div class="text-6xl mb-6">👕</div>
+                <h3 class="text-xl font-bold mb-2"><span class="lang-en">HKAIIFF T-Shirt</span><span class="lang-zh">HKAIIFF T恤</span></h3>
+                <p class="text-sm text-gray-500 mb-6"><span class="lang-en">Official festival merchandise with AI design</span><span class="lang-zh">官方電影節周邊，AI設計</span></p>
+                <button class="bg-black text-white px-6 py-2 rounded-full text-sm font-bold w-full mb-2">
+                    <span class="lang-en">Redeem</span><span class="lang-zh">兌換</span>
+                </button>
+                <div class="text-xs font-mono font-bold">50 AIF</div>
+            </div>
 
-                <div class="card p-0 overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-blue-600 to-teal-600 flex items-center justify-center text-6xl">
-                        👕
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="HKAIIFF T-Shirt" data-zh="HKAIIFF T恤">HKAIIFF T-Shirt</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-en="Official festival merchandise with AI design" data-zh="官方電影節周邊，AI設計">
-                            Official festival merchandise with AI design
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-accent">50 AIF</span>
-                            <button class="btn-primary px-4 py-2 rounded-lg" data-en="Redeem" data-zh="兌換">Redeem</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card p-0 overflow-hidden">
-                    <div class="h-48 bg-gradient-to-br from-green-600 to-yellow-600 flex items-center justify-center text-6xl">
-                        🎭
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2" data-en="VIP Festival Pass" data-zh="VIP電影節通行證">VIP Festival Pass</h3>
-                        <p class="text-gray-400 text-sm mb-4" data-en="Access all HKAIIFF 2025 events and parties" data-zh="訪問所有HKAIIFF 2025活動和派對">
-                            Access all HKAIIFF 2025 events and parties
-                        </p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-2xl font-bold text-accent">1000 AIF</span>
-                            <button class="btn-primary px-4 py-2 rounded-lg" data-en="Redeem" data-zh="兌換">Redeem</button>
-                        </div>
-                    </div>
-                </div>
+            <!-- Reward 3 -->
+            <div class="border border-gray-200 rounded-lg p-8 text-center hover:bg-gray-50 transition-colors">
+                <div class="text-6xl mb-6">🎭</div>
+                <h3 class="text-xl font-bold mb-2"><span class="lang-en">VIP Festival Pass</span><span class="lang-zh">VIP電影節通行證</span></h3>
+                <p class="text-sm text-gray-500 mb-6"><span class="lang-en">Access all HKAIIFF 2025 events and parties</span><span class="lang-zh">訪問所有HKAIIFF 2025活動和派對</span></p>
+                <button class="bg-black text-white px-6 py-2 rounded-full text-sm font-bold w-full mb-2">
+                    <span class="lang-en">Redeem</span><span class="lang-zh">兌換</span>
+                </button>
+                <div class="text-xs font-mono font-bold">1000 AIF</div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-800">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="logo-font text-2xl mb-4">AIF.GIFTS</div>
-                    <p class="text-gray-400 text-sm" data-en="The official rewards hub for the AIF ecosystem" data-zh="AIF生態系統的官方獎勵中心">
-                        The official rewards hub for the AIF ecosystem
+    <footer class="bg-black text-white pt-24 pb-8 px-6 md:px-8 mt-24">
+        <div class="max-w-[1920px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-white/20 pb-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="#" class="text-2xl font-bold block mb-4">AIF.GIFTS</a>
+                    <p class="text-gray-400 text-sm max-w-xs leading-relaxed">
+                        <span class="lang-en">The official rewards hub for the AIF ecosystem. Part of the Hong Kong AI International Film Festival ecosystem.</span>
+                        <span class="lang-zh">AIF生態系統的官方獎勵中心。香港AI國際電影節生態系統的一部分。</span>
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4" data-en="Quick Links" data-zh="快速鏈接">Quick Links</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#airdrops" class="hover:text-accent transition" data-en="Airdrops" data-zh="空投">Airdrops</a></li>
-                        <li><a href="#rewards" class="hover:text-accent transition" data-en="Rewards" data-zh="獎勵">Rewards</a></li>
-                        <li><a href="#how-it-works" class="hover:text-accent transition" data-en="How It Works" data-zh="使用指南">How It Works</a></li>
+                    <h4 class="text-xs font-bold uppercase tracking-wider mb-4 text-gray-500"><span class="lang-en">Quick Links</span><span class="lang-zh">快速鏈接</span></h4>
+                    <ul class="space-y-3 text-sm font-medium text-gray-300">
+                        <li><a href="#airdrops" class="hover:text-white"><span class="lang-en">Airdrops</span><span class="lang-zh">空投</span></a></li>
+                        <li><a href="#rewards" class="hover:text-white"><span class="lang-en">Rewards</span><span class="lang-zh">獎勵</span></a></li>
+                        <li><a href="#how-it-works" class="hover:text-white"><span class="lang-en">How It Works</span><span class="lang-zh">使用指南</span></a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4" data-en="Ecosystem" data-zh="生態系統">Ecosystem</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-accent transition">AIF.Market</a></li>
-                        <li><a href="#" class="hover:text-accent transition">HKAIIFF</a></li>
-                        <li><a href="#" class="hover:text-accent transition">AIF.Academy</a></li>
-                        <li><a href="#" class="hover:text-accent transition">404.world</a></li>
+                    <h4 class="text-xs font-bold uppercase tracking-wider mb-4 text-gray-500"><span class="lang-en">Ecosystem</span><span class="lang-zh">生態系統</span></h4>
+                    <ul class="space-y-3 text-sm font-medium text-gray-300">
+                        <li><a href="#" class="hover:text-white">AIF.Market</a></li>
+                        <li><a href="#" class="hover:text-white">HKAIIFF</a></li>
+                        <li><a href="#" class="hover:text-white">AIF.Academy</a></li>
+                        <li><a href="#" class="hover:text-white">404.world</a></li>
                     </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold mb-4" data-en="Connect" data-zh="連接">Connect</h4>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-accent hover:text-black transition">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-accent hover:text-black transition">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-accent hover:text-black transition">
-                            <i class="fab fa-telegram"></i>
-                        </a>
-                    </div>
                 </div>
             </div>
-            <div class="text-center text-sm text-gray-400 pt-8 border-t border-gray-800">
-                <p data-en="© 2025 AIF.Gifts. All rights reserved. Part of the Hong Kong AI International Film Festival ecosystem." data-zh="© 2025 AIF.Gifts。保留所有權利。香港AI國際電影節生態系統的一部分。">
-                    © 2025 AIF.Gifts. All rights reserved. Part of the Hong Kong AI International Film Festival ecosystem.
+            
+            <div class="flex justify-between items-end text-[10px] uppercase text-gray-500 font-mono">
+                <p>
+                    <span class="lang-en">© 2025 AIF.Gifts. All rights reserved.</span>
+                    <span class="lang-zh">© 2025 AIF.Gifts。保留所有權利。</span>
                 </p>
+                <div class="flex gap-4 text-lg">
+                    <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fab fa-telegram"></i></a>
+                </div>
             </div>
         </div>
     </footer>
@@ -1001,210 +593,205 @@
     <!-- Wallet Connection Modal -->
     <div class="modal" id="walletModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeWalletModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <h2 class="text-3xl font-bold mb-2 gradient-text text-center" data-en="Connect Your Wallet" data-zh="連接您的錢包">Connect Your Wallet</h2>
-            <p class="text-center text-gray-400 mb-6" data-en="Choose your preferred wallet to get started" data-zh="選擇您首選的錢包開始">Choose your preferred wallet to get started</p>
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold"><span class="lang-en">Connect Wallet</span><span class="lang-zh">連接您的錢包</span></h2>
+                <button onclick="closeWalletModal()" class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-black hover:text-white transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <p class="text-gray-500 mb-8 text-sm"><span class="lang-en">Choose your preferred wallet to get started</span><span class="lang-zh">選擇您首選的錢包開始</span></p>
             
             <div class="space-y-3">
-                <div class="wallet-option" onclick="connectWallet('metamask')">
-                    <div class="wallet-icon">🦊</div>
-                    <div class="flex-1">
-                        <div class="font-bold">MetaMask</div>
-                        <div class="text-sm text-gray-400" data-en="Most popular Web3 wallet" data-zh="最受歡迎的Web3錢包">Most popular Web3 wallet</div>
+                <div class="flex items-center gap-4 p-4 border border-gray-200 rounded-lg cursor-pointer hover:border-black hover:bg-gray-50 transition-all" onclick="connectWallet('metamask')">
+                    <div class="text-2xl">🦊</div>
+                    <div>
+                        <div class="font-bold text-sm">MetaMask</div>
+                        <div class="text-xs text-gray-400">Popular Web3 wallet</div>
                     </div>
-                    <i class="fas fa-chevron-right text-gray-400"></i>
                 </div>
-
-                <div class="wallet-option" onclick="connectWallet('walletconnect')">
-                    <div class="wallet-icon">🔗</div>
-                    <div class="flex-1">
-                        <div class="font-bold">WalletConnect</div>
-                        <div class="text-sm text-gray-400" data-en="Connect with mobile wallets" data-zh="連接移動錢包">Connect with mobile wallets</div>
+                <div class="flex items-center gap-4 p-4 border border-gray-200 rounded-lg cursor-pointer hover:border-black hover:bg-gray-50 transition-all" onclick="connectWallet('walletconnect')">
+                    <div class="text-2xl">🔗</div>
+                    <div>
+                        <div class="font-bold text-sm">WalletConnect</div>
+                        <div class="text-xs text-gray-400">Mobile wallets</div>
                     </div>
-                    <i class="fas fa-chevron-right text-gray-400"></i>
                 </div>
-
-                <div class="wallet-option" onclick="connectWallet('coinbase')">
-                    <div class="wallet-icon">💼</div>
-                    <div class="flex-1">
-                        <div class="font-bold">Coinbase Wallet</div>
-                        <div class="text-sm text-gray-400" data-en="Secure and user-friendly" data-zh="安全且用戶友好">Secure and user-friendly</div>
+                <div class="flex items-center gap-4 p-4 border border-gray-200 rounded-lg cursor-pointer hover:border-black hover:bg-gray-50 transition-all" onclick="connectWallet('coinbase')">
+                    <div class="text-2xl">💼</div>
+                    <div>
+                        <div class="font-bold text-sm">Coinbase Wallet</div>
+                        <div class="text-xs text-gray-400">Secure & friendly</div>
                     </div>
-                    <i class="fas fa-chevron-right text-gray-400"></i>
                 </div>
             </div>
 
-            <div class="mt-6 p-4 bg-black bg-opacity-40 rounded-lg">
-                <div class="flex items-start gap-3">
-                    <i class="fas fa-info-circle text-accent mt-1"></i>
-                    <div class="text-sm text-gray-400" data-en="By connecting your wallet, you agree to our Terms of Service and Privacy Policy. Your wallet is secured by blockchain technology." data-zh="通過連接錢包，您同意我們的服務條款和隱私政策。您的錢包由區塊鏈技術保護。">
-                        By connecting your wallet, you agree to our Terms of Service and Privacy Policy. Your wallet is secured by blockchain technology.
-                    </div>
-                </div>
+            <div class="mt-6 pt-6 border-t border-gray-100 text-[10px] text-gray-400 leading-tight">
+                <span class="lang-en">By connecting your wallet, you agree to our Terms of Service and Privacy Policy.</span>
+                <span class="lang-zh">通過連接錢包，您同意我們的服務條款和隱私政策。</span>
             </div>
         </div>
     </div>
 
     <!-- Quiz Modal -->
     <div class="modal" id="quizModal">
-        <div class="modal-content" style="max-width: 800px;">
-            <button class="modal-close" onclick="closeQuizModal()">
+        <div class="modal-content">
+            <button class="absolute top-4 right-4 w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-black hover:text-white transition-colors" onclick="closeQuizModal()">
                 <i class="fas fa-times"></i>
             </button>
             
             <div id="quizContent">
                 <!-- Quiz Start Screen -->
-                <div id="quizStart">
-                    <div class="unicorn-avatar">🦄</div>
-                    <h2 class="text-3xl font-bold mb-4 text-center gradient-text" data-en="Welcome! I'm AI Unicorn" data-zh="歡迎！我是AI獨角獸">Welcome! I'm AI Unicorn</h2>
-                    <p class="text-center text-gray-300 mb-6" data-en="Let's learn about the AIF ecosystem together! Answer 10 questions correctly to earn your airdrop. Don't worry, I'll guide you through each question." data-zh="讓我們一起了解AIF生態系統！正確回答10個問題即可獲得空投。別擔心，我會引導您完成每個問題。">
-                        Let's learn about the AIF ecosystem together! Answer 10 questions correctly to earn your airdrop. Don't worry, I'll guide you through each question.
+                <div id="quizStart" class="text-center py-4">
+                    <div class="text-6xl mb-6">🦄</div>
+                    <h2 class="text-2xl font-bold mb-3"><span class="lang-en">Welcome! I'm AI Unicorn</span><span class="lang-zh">歡迎！我是AI獨角獸</span></h2>
+                    <p class="text-gray-500 text-sm mb-8 leading-relaxed max-w-sm mx-auto">
+                        <span class="lang-en">Let's learn about the AIF ecosystem together! Answer 10 questions correctly to earn your airdrop.</span>
+                        <span class="lang-zh">讓我們一起了解AIF生態系統！正確回答10個問題即可獲得空投。</span>
                     </p>
-                    <div class="grid grid-cols-3 gap-4 mb-6">
-                        <div class="card p-4 text-center">
-                            <div class="text-2xl mb-2">📚</div>
-                            <div class="text-sm text-gray-400" data-en="10 Questions" data-zh="10個問題">10 Questions</div>
+                    
+                    <div class="grid grid-cols-3 gap-3 mb-8">
+                        <div class="border border-gray-200 p-3 rounded bg-gray-50">
+                            <div class="font-bold text-sm mb-1">10</div>
+                            <div class="text-[10px] text-gray-400 uppercase">Questions</div>
                         </div>
-                        <div class="card p-4 text-center">
-                            <div class="text-2xl mb-2">⏱️</div>
-                            <div class="text-sm text-gray-400" data-en="No Time Limit" data-zh="無時間限制">No Time Limit</div>
+                        <div class="border border-gray-200 p-3 rounded bg-gray-50">
+                            <div class="font-bold text-sm mb-1">∞</div>
+                            <div class="text-[10px] text-gray-400 uppercase">Time</div>
                         </div>
-                        <div class="card p-4 text-center">
-                            <div class="text-2xl mb-2">🎁</div>
-                            <div class="text-sm text-gray-400" id="quizReward">1000 AIF</div>
+                        <div class="border border-gray-200 p-3 rounded bg-gray-50">
+                            <div class="font-bold text-sm mb-1 text-black" id="quizReward">1000 AIF</div>
+                            <div class="text-[10px] text-gray-400 uppercase">Reward</div>
                         </div>
                     </div>
-                    <button class="btn-accent w-full py-4 rounded-lg text-lg font-bold" onclick="startQuizQuestions()">
-                        <i class="fas fa-play mr-2"></i>
-                        <span data-en="Let's Begin!" data-zh="開始吧！">Let's Begin!</span>
+
+                    <button class="w-full bg-black text-white py-3 rounded-full font-bold text-sm btn-hover" onclick="startQuizQuestions()">
+                        <span class="lang-en">Let's Begin!</span><span class="lang-zh">開始吧！</span>
                     </button>
                 </div>
 
                 <!-- Quiz Questions Screen -->
                 <div id="quizQuestions" style="display: none;">
                     <div class="mb-6">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-gray-400" data-en="Progress" data-zh="進度">Progress</span>
+                        <div class="flex justify-between items-center mb-2 text-xs font-mono">
+                            <span class="text-gray-400"><span class="lang-en">Progress</span><span class="lang-zh">進度</span></span>
                             <span class="font-bold"><span id="currentQuestion">1</span>/10</span>
                         </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar" id="quizProgress" style="width: 10%"></div>
+                        <div class="w-full bg-gray-100 rounded-full h-1.5">
+                            <div class="bg-black h-1.5 rounded-full transition-all duration-300" id="quizProgress" style="width: 10%"></div>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="unicorn-avatar" style="width: 60px; height: 60px; font-size: 2rem;">🦄</div>
-                        <div class="flex-1">
-                            <div class="font-bold text-accent mb-1">AI Unicorn</div>
-                            <div class="text-sm text-gray-400" id="unicornMessage" data-en="Let me ask you a question..." data-zh="讓我問你一個問題...">Let me ask you a question...</div>
+                    <div class="flex items-start gap-4 mb-6 bg-gray-50 p-4 rounded-lg">
+                        <div class="text-3xl">🦄</div>
+                        <div>
+                            <div class="font-bold text-xs uppercase mb-1">AI Unicorn</div>
+                            <div class="text-sm text-gray-600 leading-snug" id="unicornMessage">Let me ask you a question...</div>
                         </div>
                     </div>
 
-                    <div class="quiz-question">
-                        <h3 class="text-xl font-bold mb-4" id="questionText">What is the total supply of AIF tokens?</h3>
+                    <div class="mb-6">
+                        <h3 class="text-lg font-bold mb-4 leading-snug" id="questionText">Question text goes here?</h3>
                         <div id="optionsContainer" class="space-y-3">
                             <!-- Options will be inserted here -->
                         </div>
                     </div>
 
-                    <div class="flex gap-4 mt-6">
-                        <button class="btn-secondary flex-1 py-3 rounded-lg font-bold" onclick="skipQuestion()" data-en="Skip Question" data-zh="跳過問題">Skip Question</button>
-                        <button class="btn-accent flex-1 py-3 rounded-lg font-bold" id="submitAnswerBtn" onclick="submitAnswer()" disabled data-en="Submit Answer" data-zh="提交答案">Submit Answer</button>
+                    <div class="flex gap-3">
+                        <button class="flex-1 border border-gray-200 py-3 rounded-full font-bold text-sm hover:bg-gray-50" onclick="skipQuestion()">
+                            <span class="lang-en">Skip</span><span class="lang-zh">跳過</span>
+                        </button>
+                        <button class="flex-1 bg-black text-white py-3 rounded-full font-bold text-sm disabled:opacity-50" id="submitAnswerBtn" onclick="submitAnswer()" disabled>
+                            <span class="lang-en">Submit</span><span class="lang-zh">提交</span>
+                        </button>
                     </div>
                 </div>
 
                 <!-- Quiz Result Screen -->
-                <div id="quizResult" style="display: none;">
-                    <div class="text-center">
-                        <div class="unicorn-avatar">🦄</div>
-                        <h2 class="text-3xl font-bold mb-4 gradient-text" id="resultTitle">Congratulations!</h2>
-                        <p class="text-xl text-gray-300 mb-6" id="resultMessage">You've successfully completed the quiz!</p>
-                        
-                        <div class="card p-6 mb-6">
-                            <div class="text-sm text-gray-400 mb-2" data-en="Your Score" data-zh="您的得分">Your Score</div>
-                            <div class="text-5xl font-bold gradient-text mb-2"><span id="finalScore">10</span>/10</div>
-                            <div class="text-sm text-gray-400" data-en="Questions Answered Correctly" data-zh="正確回答的問題">Questions Answered Correctly</div>
-                        </div>
-
-                        <div class="reward-badge mb-6">
+                <div id="quizResult" style="display: none;" class="text-center py-4">
+                    <div class="text-6xl mb-6">🦄</div>
+                    <h2 class="text-2xl font-bold mb-2" id="resultTitle">Congratulations!</h2>
+                    <p class="text-gray-500 text-sm mb-8" id="resultMessage">You've successfully completed the quiz!</p>
+                    
+                    <div class="border border-gray-200 rounded-lg p-6 mb-8">
+                        <div class="text-xs text-gray-400 uppercase tracking-widest mb-2"><span class="lang-en">Final Score</span><span class="lang-zh">最終得分</span></div>
+                        <div class="text-5xl font-bold font-mono mb-2"><span id="finalScore">10</span>/10</div>
+                        <div class="inline-block bg-black text-white px-4 py-1 rounded-full text-sm font-bold mt-2">
                             🎁 <span id="rewardAmount">1000 AIF</span>
                         </div>
-
-                        <button class="btn-accent w-full py-4 rounded-lg text-lg font-bold mb-3" onclick="claimAirdrop()">
-                            <i class="fas fa-gift mr-2"></i>
-                            <span data-en="Claim Your Airdrop" data-zh="領取您的空投">Claim Your Airdrop</span>
-                        </button>
-                        <button class="btn-secondary w-full py-3 rounded-lg font-bold" onclick="closeQuizModal()">
-                            <span data-en="Back to Airdrops" data-zh="返回空投">Back to Airdrops</span>
-                        </button>
                     </div>
+
+                    <button class="w-full bg-black text-white py-3 rounded-full font-bold text-sm mb-3 btn-hover" onclick="claimAirdrop()">
+                        <span class="lang-en">Claim Your Airdrop</span><span class="lang-zh">領取您的空投</span>
+                    </button>
+                    <button class="w-full border border-gray-200 py-3 rounded-full font-bold text-sm hover:bg-gray-50" onclick="closeQuizModal()">
+                        <span class="lang-en">Back to Airdrops</span><span class="lang-zh">返回空投</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Tutorial Overlay -->
-    <div class="tutorial-overlay" id="tutorialOverlay">
-        <div class="tutorial-content">
-            <div class="tutorial-step">
-                <div class="text-6xl mb-4">🎓</div>
-                <h2 class="text-3xl font-bold mb-4 gradient-text" data-en="How AIF.Gifts Works" data-zh="AIF.Gifts如何運作">How AIF.Gifts Works</h2>
-                <div class="text-left space-y-4 mb-6">
-                    <div class="flex gap-4">
-                        <div class="text-3xl">1️⃣</div>
-                        <div>
-                            <h3 class="font-bold mb-1" data-en="Connect Your Wallet" data-zh="連接錢包">Connect Your Wallet</h3>
-                            <p class="text-gray-400 text-sm" data-en="Use MetaMask, WalletConnect, or Coinbase Wallet to connect" data-zh="使用MetaMask、WalletConnect或Coinbase錢包連接">Use MetaMask, WalletConnect, or Coinbase Wallet to connect</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="text-3xl">2️⃣</div>
-                        <div>
-                            <h3 class="font-bold mb-1" data-en="Choose an Airdrop" data-zh="選擇空投">Choose an Airdrop</h3>
-                            <p class="text-gray-400 text-sm" data-en="Browse available campaigns and select one you're interested in" data-zh="瀏覽可用活動並選擇您感興趣的">Browse available campaigns and select one you're interested in</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="text-3xl">3️⃣</div>
-                        <div>
-                            <h3 class="font-bold mb-1" data-en="Chat with AI Unicorn" data-zh="與AI獨角獸對話">Chat with AI Unicorn</h3>
-                            <p class="text-gray-400 text-sm" data-en="Answer 10 interactive questions - learn while you earn!" data-zh="回答10個互動問題 - 邊學邊賺！">Answer 10 interactive questions - learn while you earn!</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="text-3xl">4️⃣</div>
-                        <div>
-                            <h3 class="font-bold mb-1" data-en="Claim Your Rewards" data-zh="領取獎勵">Claim Your Rewards</h3>
-                            <p class="text-gray-400 text-sm" data-en="Pass the quiz and instantly receive tokens to your wallet" data-zh="通過測驗並立即將代幣發送到您的錢包">Pass the quiz and instantly receive tokens to your wallet</p>
-                        </div>
+    <div class="modal" id="tutorialOverlay">
+        <div class="modal-content">
+             <button class="absolute top-4 right-4 w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center hover:bg-black hover:text-white transition-colors" onclick="closeTutorial()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="text-center mb-8">
+                <div class="text-4xl mb-4">🎓</div>
+                <h2 class="text-2xl font-bold"><span class="lang-en">How It Works</span><span class="lang-zh">使用指南</span></h2>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
+                    <div>
+                        <h3 class="font-bold text-sm mb-1"><span class="lang-en">Connect Your Wallet</span><span class="lang-zh">連接錢包</span></h3>
+                        <p class="text-xs text-gray-500"><span class="lang-en">Use MetaMask, WalletConnect, or Coinbase.</span><span class="lang-zh">使用MetaMask、WalletConnect或Coinbase。</span></p>
                     </div>
                 </div>
-                <button class="btn-accent w-full py-4 rounded-lg text-lg font-bold" onclick="closeTutorial()">
-                    <span data-en="Got It! Let's Start" data-zh="明白了！開始吧">Got It! Let's Start</span>
-                </button>
+                <div class="flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
+                    <div>
+                        <h3 class="font-bold text-sm mb-1"><span class="lang-en">Choose an Airdrop</span><span class="lang-zh">選擇空投</span></h3>
+                        <p class="text-xs text-gray-500"><span class="lang-en">Browse available campaigns.</span><span class="lang-zh">瀏覽可用活動。</span></p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
+                    <div>
+                        <h3 class="font-bold text-sm mb-1"><span class="lang-en">Chat with AI Unicorn</span><span class="lang-zh">與AI獨角獸對話</span></h3>
+                        <p class="text-xs text-gray-500"><span class="lang-en">Answer 10 interactive questions.</span><span class="lang-zh">回答10個互動問題。</span></p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold flex-shrink-0">4</div>
+                    <div>
+                        <h3 class="font-bold text-sm mb-1"><span class="lang-en">Claim Your Rewards</span><span class="lang-zh">領取獎勵</span></h3>
+                        <p class="text-xs text-gray-500"><span class="lang-en">Instantly receive tokens.</span><span class="lang-zh">立即獲得代幣。</span></p>
+                    </div>
+                </div>
             </div>
+
+            <button class="w-full bg-black text-white py-3 rounded-full font-bold text-sm mt-8 btn-hover" onclick="closeTutorial()">
+                <span class="lang-en">Got It!</span><span class="lang-zh">明白了！</span>
+            </button>
         </div>
     </div>
 
     <script>
-        // Language Toggle
-        let currentLanguage = 'en';
-        
+        // --- 1. Language System (Based on index.html) ---
         function toggleLanguage() {
-            currentLanguage = currentLanguage === 'en' ? 'zh' : 'en';
-            updateLanguage();
+            const body = document.body;
+            const currentLang = body.getAttribute('data-lang');
+            const newLang = currentLang === 'en' ? 'zh' : 'en';
+            body.setAttribute('data-lang', newLang);
+            
+            // Also update dynamic JS content if needed
+            updateJsContent(newLang);
         }
 
-        function updateLanguage() {
-            const elements = document.querySelectorAll('[data-en][data-zh]');
-            elements.forEach(element => {
-                element.textContent = element.getAttribute('data-' + currentLanguage);
-            });
-        }
-
-        // Mobile Menu
+        // --- 2. Mobile Menu ---
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('open');
         }
@@ -1213,7 +800,7 @@
             document.getElementById('mobileMenu').classList.remove('open');
         }
 
-        // Wallet Connection
+        // --- 3. Wallet Logic ---
         let isWalletConnected = false;
         let userWalletAddress = '';
 
@@ -1225,131 +812,139 @@
             document.getElementById('walletModal').classList.remove('active');
         }
 
-        function connectWallet(walletType) {
-            // Simulate wallet connection
+        function connectWallet(type) {
             setTimeout(() => {
-                // Generate a mock wallet address
-                userWalletAddress = '0x' + Math.random().toString(16).substr(2, 8) + '...' + Math.random().toString(16).substr(2, 4);
+                userWalletAddress = '0x' + Math.random().toString(16).substr(2, 8) + '...';
                 isWalletConnected = true;
                 
-                // Update UI
                 document.getElementById('connectWalletBtn').style.display = 'none';
-                document.getElementById('userProfile').classList.add('active');
+                document.getElementById('userProfile').classList.remove('hidden');
+                document.getElementById('userProfile').classList.add('flex');
                 document.getElementById('walletAddress').textContent = userWalletAddress;
-                document.getElementById('userAvatar').textContent = userWalletAddress.charAt(2).toUpperCase();
                 
                 closeWalletModal();
-                
-                // Show success message
-                showNotification('Wallet Connected Successfully! 🎉', 'success');
-            }, 1000);
+                showNotification('Wallet Connected Successfully', 'success');
+            }, 800);
         }
 
         function logout() {
             isWalletConnected = false;
-            userWalletAddress = '';
-            document.getElementById('connectWalletBtn').style.display = 'block';
-            document.getElementById('userProfile').classList.remove('active');
+            document.getElementById('connectWalletBtn').style.display = 'flex';
+            document.getElementById('userProfile').classList.add('hidden');
+            document.getElementById('userProfile').classList.remove('flex');
             showNotification('Wallet Disconnected', 'info');
         }
 
-        // Tutorial
+        // --- 4. Tutorial Logic ---
         function showTutorial() {
             document.getElementById('tutorialOverlay').classList.add('active');
         }
-
         function closeTutorial() {
             document.getElementById('tutorialOverlay').classList.remove('active');
         }
 
-        // Quiz System
+        // --- 5. Quiz System (Updated for Multilingual Support) ---
         let currentQuiz = null;
         let currentQuestionIndex = 0;
         let userAnswers = [];
         let selectedOption = null;
 
+        // Simplified data structure that holds both languages
         const quizData = {
             'aif-airdrop': {
-                title: 'AIF Token Airdrop',
                 reward: '1000 AIF',
                 questions: [
                     {
-                        question: 'What is the total supply of AIF tokens?',
-                        options: ['1 Billion', '10 Billion', '100 Billion', '1 Trillion'],
+                        q_en: 'What is the total supply of AIF tokens?',
+                        q_zh: 'AIF代幣的總供應量是多少？',
+                        options_en: ['1 Billion', '10 Billion', '100 Billion', '1 Trillion'],
+                        options_zh: ['10億', '100億', '1000億', '1萬億'],
                         correct: 1,
-                        explanation: 'AIF has a total supply of 10 billion tokens!'
+                        expl_en: 'AIF has a total supply of 10 billion tokens!',
+                        expl_zh: 'AIF的總供應量為100億枚！'
                     },
                     {
-                        question: 'Which blockchain networks does AIF support?',
-                        options: ['Only Ethereum', 'Ethereum and Polygon', 'Only Polygon', 'Bitcoin'],
+                        q_en: 'Which blockchain networks does AIF support?',
+                        q_zh: 'AIF支持哪些區塊鏈網絡？',
+                        options_en: ['Only Ethereum', 'Ethereum and Polygon', 'Only Polygon', 'Bitcoin'],
+                        options_zh: ['僅以太坊', '以太坊和Polygon', '僅Polygon', '比特幣'],
                         correct: 1,
-                        explanation: 'AIF is available on both Ethereum and Polygon networks!'
+                        expl_en: 'AIF is available on both Ethereum and Polygon networks!',
+                        expl_zh: 'AIF在以太坊和Polygon網絡上均可使用！'
                     },
-                    {
-                        question: 'What is AIF.Market?',
-                        options: ['A cryptocurrency exchange', 'A film project funding platform', 'A gaming platform', 'A social media network'],
+                     {
+                        q_en: 'What is AIF.Market?',
+                        q_zh: '什麼是 AIF.Market？',
+                        options_en: ['Crypto Exchange', 'Film Funding Platform', 'Game', 'Social Network'],
+                        options_zh: ['加密交易所', '電影融資平台', '遊戲', '社交網絡'],
                         correct: 1,
-                        explanation: 'AIF.Market is the world\'s first AI-native film project funding platform!'
-                    },
-                    {
-                        question: 'What does FilmToken represent?',
-                        options: ['Movie tickets', 'Revenue sharing rights', 'NFT collectibles', 'Voting power only'],
-                        correct: 1,
-                        explanation: 'FilmToken holders receive revenue sharing rights from film projects!'
-                    },
-                    {
-                        question: 'What is the main purpose of AIF tokens?',
-                        options: ['Payment only', 'Governance, rewards, and payments', 'Staking only', 'Trading only'],
-                        correct: 1,
-                        explanation: 'AIF tokens serve multiple purposes including governance, ecosystem rewards, and payments!'
-                    },
-                    {
-                        question: 'What is 404.world?',
-                        options: ['An error page', 'A metaverse platform', 'A website builder', 'A game studio'],
-                        correct: 1,
-                        explanation: '404.world is the metaverse platform in the AIF ecosystem!'
-                    },
-                    {
-                        question: 'What is AIF.Academy?',
-                        options: ['A school building', 'An AI filmmaking education platform', 'A cryptocurrency course', 'A film festival'],
-                        correct: 1,
-                        explanation: 'AIF.Academy teaches AI-native filmmaking skills!'
-                    },
-                    {
-                        question: 'What is HKAIIFF?',
-                        options: ['Hong Kong AI Investment Fund', 'Hong Kong AI International Film Festival', 'Hong Kong AI Innovation Forum', 'Hong Kong AI Institute'],
-                        correct: 1,
-                        explanation: 'HKAIIFF stands for Hong Kong AI International Film Festival!'
-                    },
-                    {
-                        question: 'How do you earn airdrops on AIF.Gifts?',
-                        options: ['By purchasing tokens', 'By completing interactive quizzes', 'By referring friends only', 'Randomly distributed'],
-                        correct: 1,
-                        explanation: 'You earn airdrops by learning and completing interactive quizzes with AI Unicorn!'
-                    },
-                    {
-                        question: 'What makes AIF.Gifts unique?',
-                        options: ['Highest token price', 'Learn-to-earn model with AI interaction', 'Fastest transactions', 'Largest community'],
-                        correct: 1,
-                        explanation: 'AIF.Gifts pioneered the learn-to-earn model with AI-guided interactive education!'
+                        expl_en: 'AIF.Market is the world\'s first AI-native film project funding platform!',
+                        expl_zh: 'AIF.Market 是全球首個AI原生電影項目融資平台！'
                     }
                 ]
             },
             'genesis-film': {
-                title: 'Genesis Film Token',
                 reward: '500 FILM',
                 questions: [
                     {
-                        question: 'What type of project is Genesis Film?',
-                        options: ['A documentary', 'An AI-generated sci-fi film', 'A reality show', 'A music video'],
+                        q_en: 'What type of project is Genesis Film?',
+                        q_zh: 'Genesis Film是什麼類型的項目？',
+                        options_en: ['Documentary', 'AI Sci-Fi Film', 'Reality Show', 'Music Video'],
+                        options_zh: ['紀錄片', 'AI科幻電影', '真人秀', '音樂視頻'],
                         correct: 1,
-                        explanation: 'Genesis Film is a groundbreaking AI-generated science fiction film!'
+                        expl_en: 'Genesis Film is a groundbreaking AI-generated science fiction film!',
+                        expl_zh: 'Genesis Film是一部開創性的AI生成科幻電影！'
                     },
-                    {
-                        question: 'How many FILM tokens are allocated to investors?',
-                        options: ['30%', '50%', '70%', '90%'],
+                     {
+                        q_en: 'How many FILM tokens are allocated to investors?',
+                        q_zh: '有多少FILM代幣分配給投資者？',
+                        options_en: ['30%', '50%', '70%', '90%'],
+                        options_zh: ['30%', '50%', '70%', '90%'],
                         correct: 1,
-                        explanation: 'FilmToken allocation typically gives 50% to investors!'
+                        expl_en: 'FilmToken allocation typically gives 50% to investors!',
+                        expl_zh: 'FilmToken分配通常將50%給予投資者！'
+                    }
+                ]
+            },
+            'partner-brand': {
+                reward: '100 BRAND',
+                questions: [
+                     {
+                        q_en: 'What is Partner Brand X known for?',
+                        q_zh: '合作夥伴品牌 X 以什麼聞名？',
+                        options_en: ['Hardware', 'Software', 'AI Tools', 'Fashion'],
+                        options_zh: ['硬件', '軟件', 'AI工具', '時尚'],
+                        correct: 2,
+                        expl_en: 'They create amazing AI tools!',
+                        expl_zh: '他們創造了驚人的AI工具！'
+                    }
+                ]
+            },
+            '404world': {
+                reward: '5 NFTs',
+                questions: [
+                     {
+                        q_en: 'What is 404.world?',
+                        q_zh: '什麼是 404.world？',
+                        options_en: ['Error Page', 'Metaverse Platform', 'Game', 'Wallet'],
+                        options_zh: ['錯誤頁面', '元宇宙平台', '遊戲', '錢包'],
+                        correct: 1,
+                        expl_en: 'It is a metaverse platform!',
+                        expl_zh: '它是一個元宇宙平台！'
+                    }
+                ]
+            },
+            'academy': {
+                reward: 'FREE Access',
+                questions: [
+                     {
+                        q_en: 'What does AIF Academy teach?',
+                        q_zh: 'AIF學院教授什麼？',
+                        options_en: ['Cooking', 'AI Filmmaking', 'Coding', 'Dancing'],
+                        options_zh: ['烹飪', 'AI電影製作', '編程', '跳舞'],
+                        correct: 1,
+                        expl_en: 'We teach AI filmmaking!',
+                        expl_zh: '我們教授AI電影製作！'
                     }
                 ]
             }
@@ -1367,17 +962,14 @@
             userAnswers = [];
             selectedOption = null;
 
-            // Load quiz data
             const quiz = quizData[quizId];
             if (quiz) {
                 document.getElementById('quizReward').textContent = quiz.reward;
+                document.getElementById('quizModal').classList.add('active');
+                document.getElementById('quizStart').style.display = 'block';
+                document.getElementById('quizQuestions').style.display = 'none';
+                document.getElementById('quizResult').style.display = 'none';
             }
-
-            // Show modal
-            document.getElementById('quizModal').classList.add('active');
-            document.getElementById('quizStart').style.display = 'block';
-            document.getElementById('quizQuestions').style.display = 'none';
-            document.getElementById('quizResult').style.display = 'none';
         }
 
         function startQuizQuestions() {
@@ -1387,7 +979,9 @@
         }
 
         function loadQuestion() {
+            const lang = document.body.getAttribute('data-lang');
             const quiz = quizData[currentQuiz];
+            
             if (!quiz || currentQuestionIndex >= quiz.questions.length) {
                 showQuizResult();
                 return;
@@ -1395,33 +989,32 @@
 
             const question = quiz.questions[currentQuestionIndex];
             
-            // Update progress
+            // Progress
             const progress = ((currentQuestionIndex + 1) / quiz.questions.length) * 100;
             document.getElementById('quizProgress').style.width = progress + '%';
             document.getElementById('currentQuestion').textContent = currentQuestionIndex + 1;
 
-            // Update question
-            document.getElementById('questionText').textContent = question.question;
+            // Content
+            document.getElementById('questionText').textContent = lang === 'en' ? question.q_en : question.q_zh;
+            
+            // Unicorn Message
+            const msgs = lang === 'en' 
+                ? ['Let me ask you this...', 'Think carefully...', 'Next question...']
+                : ['讓我問你這個...', '仔細思考...', '下一個問題...'];
+            document.getElementById('unicornMessage').textContent = msgs[Math.floor(Math.random() * msgs.length)];
 
-            // Update Unicorn message
-            const messages = [
-                'Let me ask you this...',
-                'Here\'s an interesting one!',
-                'Think carefully about this...',
-                'You\'re doing great! Next question...',
-                'Almost there! Let\'s continue...'
-            ];
-            document.getElementById('unicornMessage').textContent = messages[Math.floor(Math.random() * messages.length)];
-
-            // Load options
+            // Options
             const optionsContainer = document.getElementById('optionsContainer');
             optionsContainer.innerHTML = '';
             selectedOption = null;
             document.getElementById('submitAnswerBtn').disabled = true;
+            document.getElementById('submitAnswerBtn').classList.add('opacity-50');
 
-            question.options.forEach((option, index) => {
+            const currentOptions = lang === 'en' ? question.options_en : question.options_zh;
+
+            currentOptions.forEach((option, index) => {
                 const optionDiv = document.createElement('div');
-                optionDiv.className = 'quiz-option';
+                optionDiv.className = 'quiz-option p-4 rounded-lg cursor-pointer text-sm font-medium';
                 optionDiv.textContent = option;
                 optionDiv.onclick = () => selectOption(index, optionDiv);
                 optionsContainer.appendChild(optionDiv);
@@ -1429,60 +1022,42 @@
         }
 
         function selectOption(index, element) {
-            // Remove previous selection
-            document.querySelectorAll('.quiz-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-
-            // Mark new selection
+            document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
             element.classList.add('selected');
             selectedOption = index;
             document.getElementById('submitAnswerBtn').disabled = false;
+            document.getElementById('submitAnswerBtn').classList.remove('opacity-50');
         }
 
         function submitAnswer() {
             if (selectedOption === null) return;
 
+            const lang = document.body.getAttribute('data-lang');
             const quiz = quizData[currentQuiz];
             const question = quiz.questions[currentQuestionIndex];
             const isCorrect = selectedOption === question.correct;
 
-            userAnswers.push({
-                question: currentQuestionIndex,
-                answer: selectedOption,
-                correct: isCorrect
-            });
+            userAnswers.push({ correct: isCorrect });
 
-            // Show feedback
             const options = document.querySelectorAll('.quiz-option');
             options.forEach((opt, index) => {
-                if (index === question.correct) {
-                    opt.classList.add('correct');
-                } else if (index === selectedOption && !isCorrect) {
-                    opt.classList.add('incorrect');
-                }
+                if (index === question.correct) opt.classList.add('correct');
+                else if (index === selectedOption && !isCorrect) opt.classList.add('incorrect');
             });
 
-            // Update Unicorn message
-            if (isCorrect) {
-                document.getElementById('unicornMessage').textContent = '✅ Correct! ' + question.explanation;
-            } else {
-                document.getElementById('unicornMessage').textContent = '❌ Not quite! ' + question.explanation;
-            }
+            // Feedback
+            const expl = lang === 'en' ? question.expl_en : question.expl_zh;
+            const prefix = isCorrect ? (lang === 'en' ? '✅ Correct! ' : '✅ 正確！') : (lang === 'en' ? '❌ Not quite! ' : '❌ 不太對！');
+            document.getElementById('unicornMessage').textContent = prefix + expl;
 
-            // Wait before next question
             setTimeout(() => {
                 currentQuestionIndex++;
                 loadQuestion();
-            }, 3000);
+            }, 2000);
         }
 
         function skipQuestion() {
-            userAnswers.push({
-                question: currentQuestionIndex,
-                answer: null,
-                correct: false
-            });
+            userAnswers.push({ correct: false });
             currentQuestionIndex++;
             loadQuestion();
         }
@@ -1491,30 +1066,31 @@
             document.getElementById('quizQuestions').style.display = 'none';
             document.getElementById('quizResult').style.display = 'block';
 
+            const lang = document.body.getAttribute('data-lang');
             const correctAnswers = userAnswers.filter(a => a.correct).length;
             const quiz = quizData[currentQuiz];
 
             document.getElementById('finalScore').textContent = correctAnswers;
             document.getElementById('rewardAmount').textContent = quiz.reward;
 
-            if (correctAnswers >= 7) {
-                document.getElementById('resultTitle').textContent = currentLanguage === 'en' ? 'Congratulations! 🎉' : '恭喜！🎉';
-                document.getElementById('resultMessage').textContent = currentLanguage === 'en' ? 
-                    'You\'ve successfully completed the quiz!' : '您已成功完成測驗！';
+            const isWin = correctAnswers >= 1; // Simplified win condition for demo
+
+            if (lang === 'en') {
+                document.getElementById('resultTitle').textContent = isWin ? 'Congratulations! 🎉' : 'Nice Try!';
+                document.getElementById('resultMessage').textContent = isWin ? 'You\'ve successfully completed the quiz!' : 'Try again to get better score!';
             } else {
-                document.getElementById('resultTitle').textContent = currentLanguage === 'en' ? 'Nice Try!' : '不錯的嘗試！';
-                document.getElementById('resultMessage').textContent = currentLanguage === 'en' ? 
-                    'You need at least 7 correct answers to claim the airdrop. Try again!' : '您需要至少7個正確答案才能領取空投。再試一次！';
+                document.getElementById('resultTitle').textContent = isWin ? '恭喜！🎉' : '不錯的嘗試！';
+                document.getElementById('resultMessage').textContent = isWin ? '您已成功完成測驗！' : '再試一次以獲得更高分！';
             }
         }
 
         function claimAirdrop() {
             const correctAnswers = userAnswers.filter(a => a.correct).length;
-            if (correctAnswers >= 7) {
-                showNotification('🎉 Airdrop claimed successfully! Tokens will be sent to your wallet shortly.', 'success');
+            if (correctAnswers >= 1) { // Simplified
+                showNotification('🎉 Airdrop claimed successfully!', 'success');
                 closeQuizModal();
             } else {
-                showNotification('You need at least 7 correct answers to claim the airdrop.', 'warning');
+                showNotification('Score too low to claim.', 'warning');
             }
         }
 
@@ -1522,69 +1098,40 @@
             document.getElementById('quizModal').classList.remove('active');
         }
 
-        // Notification System
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                right: 20px;
-                background: ${type === 'success' ? 'rgba(34, 197, 94, 0.9)' : type === 'warning' ? 'rgba(251, 191, 36, 0.9)' : 'rgba(59, 130, 246, 0.9)'};
-                color: white;
-                padding: 1rem 1.5rem;
-                border-radius: 10px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-                z-index: 9999;
-                animation: slideIn 0.3s ease-out;
-                max-width: 300px;
-            `;
-            notification.textContent = message;
-            document.body.appendChild(notification);
+        // --- Helper: Dynamic Content Update ---
+        function updateJsContent(lang) {
+            // If quiz is open, reload current question to update text
+            if (document.getElementById('quizModal').classList.contains('active') && 
+                document.getElementById('quizQuestions').style.display === 'block') {
+                loadQuestion();
+            }
+        }
+
+        // --- Notification ---
+        function showNotification(message, type) {
+            const div = document.createElement('div');
+            div.className = `fixed top-24 right-5 px-6 py-3 rounded-lg text-white text-sm font-bold shadow-xl z-[3000] transform transition-all duration-300 translate-y-10 opacity-0 ${type === 'success' ? 'bg-green-600' : type === 'warning' ? 'bg-yellow-500' : 'bg-black'}`;
+            div.textContent = message;
+            document.body.appendChild(div);
+            
+            requestAnimationFrame(() => {
+                div.classList.remove('translate-y-10', 'opacity-0');
+            });
 
             setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease-out';
-                setTimeout(() => notification.remove(), 300);
-            }, 4000);
+                div.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => div.remove(), 300);
+            }, 3000);
         }
 
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    closeMobileMenu();
-                }
+        // --- Scroll Reveal ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        });
+        }, { threshold: 0.1 });
 
-        // Close modals on outside click
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.classList.remove('active');
-            }
-            if (event.target.id === 'tutorialOverlay') {
-                closeTutorial();
-            }
-        }
-
-        // Add CSS animations
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(400px); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(400px); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
+        document.querySelectorAll('.reveal-text').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
