@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIF.Gifts - Your Gateway to AIF Ecosystem Rewards</title>
+    <title>AIF.Gifts - AIF Ecosystem Rewards & Computing Credits</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,7 +58,7 @@
             -webkit-font-smoothing: antialiased;
         }
         
-        /* Language Switching Rules from index.html */
+        /* Language Switching Rules */
         body[data-lang="en"] .lang-zh { display: none !important; }
         body[data-lang="zh"] .lang-en { display: none !important; }
 
@@ -78,7 +78,7 @@
         .reveal-text { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
         .reveal-text.active { opacity: 1; transform: translateY(0); }
         
-        /* Modal Styles adapted to Light Theme */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -101,7 +101,7 @@
         .modal-content {
             background: #ffffff;
             border: 1px solid #1a1a1a;
-            border-radius: 12px; /* Consistent with index.html softer corners */
+            border-radius: 12px;
             max-width: 600px;
             width: 90%;
             max-height: 90vh;
@@ -111,7 +111,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        /* Custom Mobile Menu Transition */
         .mobile-menu {
             transform: translateX(100%);
             transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -144,6 +143,15 @@
             background-color: rgba(239, 68, 68, 0.1);
             color: #991b1b;
         }
+        
+        /* Checkbox Style */
+        .custom-checkbox input:checked + div {
+            background-color: #000;
+            border-color: #000;
+        }
+        .custom-checkbox input:checked + div svg {
+            display: block;
+        }
     </style>
 </head>
 
@@ -164,9 +172,9 @@
             
             <div class="hidden xl:flex items-center gap-1 text-[13px] font-medium tracking-wide">
                 <a href="#home" class="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors"><span class="lang-en">Home</span><span class="lang-zh">首頁</span></a>
-                <a href="#airdrops" class="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors"><span class="lang-en">Airdrops</span><span class="lang-zh">空投</span></a>
-                <a href="#rewards" class="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors"><span class="lang-en">Rewards</span><span class="lang-zh">獎勵</span></a>
-                <a href="#how-it-works" class="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors"><span class="lang-en">How It Works</span><span class="lang-zh">使用指南</span></a>
+                <a href="#airdrops" class="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors"><span class="lang-en">Quests</span><span class="lang-zh">任務</span></a>
+                <a href="#rewards" class="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors"><span class="lang-en">Redeem</span><span class="lang-zh">兌換</span></a>
+                <a href="#how-it-works" class="px-4 py-2 rounded-full hover:bg-gray-100 transition-colors"><span class="lang-en">Guide</span><span class="lang-zh">指南</span></a>
             </div>
 
             <div class="flex items-center gap-4">
@@ -204,9 +212,9 @@
         </div>
         <div class="flex flex-col space-y-6 text-2xl font-bold tracking-tight">
             <a href="#home" onclick="closeMobileMenu()"><span class="lang-en">Home</span><span class="lang-zh">首頁</span></a>
-            <a href="#airdrops" onclick="closeMobileMenu()"><span class="lang-en">Airdrops</span><span class="lang-zh">空投</span></a>
-            <a href="#rewards" onclick="closeMobileMenu()"><span class="lang-en">Rewards</span><span class="lang-zh">獎勵</span></a>
-            <a href="#how-it-works" onclick="closeMobileMenu()"><span class="lang-en">How It Works</span><span class="lang-zh">使用指南</span></a>
+            <a href="#airdrops" onclick="closeMobileMenu()"><span class="lang-en">Quests</span><span class="lang-zh">任務</span></a>
+            <a href="#rewards" onclick="closeMobileMenu()"><span class="lang-en">Redeem</span><span class="lang-zh">兌換</span></a>
+            <a href="#how-it-works" onclick="closeMobileMenu()"><span class="lang-en">Guide</span><span class="lang-zh">指南</span></a>
         </div>
         <div class="mt-12 pt-12 border-t border-gray-100">
             <button onclick="openWalletModal(); closeMobileMenu();" class="w-full bg-black text-white py-4 rounded-full font-bold text-lg mb-4">
@@ -227,19 +235,21 @@
                 </div>
                 
                 <h1 class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] mb-10 text-black">
-                    <span class="lang-en">Your Gateway <br> to AIF Rewards.</span>
-                    <span class="lang-zh">您的 AIF <br> 獎勵入口</span>
+                    <span class="lang-en">Your Gateway <br> to AIF Ecosystem.</span>
+                    <span class="lang-zh">您的 AIF <br> 生態入口</span>
                 </h1>
                 
                 <p class="text-lg md:text-xl text-gray-500 max-w-2xl leading-relaxed font-light">
-                    <span class="lang-en">Learn, interact with AI Unicorn, and earn AIF token airdrops. Answer 10 questions to unlock exclusive rewards from the Hong Kong AI International Film Festival ecosystem.</span>
-                    <span class="lang-zh">學習、與AI獨角獸互動，獲得AIF代幣空投。回答10個問題即可解鎖來自香港AI國際電影節生態系統的獨家獎勵。</span>
+                    <!-- Adjusted for compliance: Avoid "Earn" as primary action, emphasize "Access" and "Credits" -->
+                    <span class="lang-en">Learn, interact with AI Unicorn, and access AIF computing credits. Answer 10 questions to unlock exclusive rights from the Hong Kong AI International Film Festival ecosystem.</span>
+                    <span class="lang-zh">學習、與AI獨角獸互動，獲取AIF算力通證。回答10個問題即可解鎖來自香港AI國際電影節生態系統的獨家權益。</span>
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                    <!-- Changed "Start Earning" to "Start Quest" -->
                     <button class="bg-black text-white px-8 py-4 rounded-full text-sm font-bold btn-hover" onclick="openWalletModal()">
                         <i class="fas fa-rocket mr-2"></i>
-                        <span class="lang-en">Start Earning Now</span><span class="lang-zh">立即開始賺取</span>
+                        <span class="lang-en">Start Quest Now</span><span class="lang-zh">開始互動任務</span>
                     </button>
                     <button class="border border-gray-200 px-8 py-4 rounded-full text-sm font-bold btn-hover hover:bg-gray-50" onclick="showTutorial()">
                         <i class="fas fa-graduation-cap mr-2"></i>
@@ -252,15 +262,16 @@
                 <div class="grid grid-cols-2 gap-px bg-gray-200 border border-gray-200 rounded-lg overflow-hidden">
                     <div class="bg-white p-6 hover:bg-gray-50 transition-colors">
                         <span class="block text-3xl font-bold mb-1">10B</span>
-                        <span class="text-[10px] uppercase font-mono text-gray-400"><span class="lang-en">Total Supply</span><span class="lang-zh">AIF總供應量</span></span>
+                        <span class="text-[10px] uppercase font-mono text-gray-400"><span class="lang-en">Total Supply</span><span class="lang-zh">總供應量</span></span>
                     </div>
                     <div class="bg-white p-6 hover:bg-gray-50 transition-colors">
                         <span class="block text-3xl font-bold mb-1">50+</span>
                         <span class="text-[10px] uppercase font-mono text-gray-400"><span class="lang-en">Projects</span><span class="lang-zh">電影項目</span></span>
                     </div>
+                    <!-- COMPLIANCE CHANGE: Removed $ Dollar Sign, changed to Token Amount to avoid "Investment Return" implication -->
                     <div class="bg-white p-6 hover:bg-gray-50 transition-colors">
-                        <span class="block text-3xl font-bold mb-1">$3M+</span>
-                        <span class="text-[10px] uppercase font-mono text-gray-400"><span class="lang-en">Pool</span><span class="lang-zh">獎勵池</span></span>
+                        <span class="block text-3xl font-bold mb-1">300M+</span>
+                        <span class="text-[10px] uppercase font-mono text-gray-400"><span class="lang-en">Rewards Pool</span><span class="lang-zh">獎勵池 (AIF)</span></span>
                     </div>
                     <div class="bg-white p-6 hover:bg-gray-50 transition-colors">
                         <span class="block text-3xl font-bold mb-1">100K+</span>
@@ -273,10 +284,11 @@
 
     <!-- Marquee -->
     <div class="border-b border-gray-200 py-6 overflow-hidden bg-gray-50">
+        <!-- COMPLIANCE CHANGE: Changed "Learn to Earn" to "Learn & Connect" -->
         <div class="whitespace-nowrap animate-marquee flex items-center gap-12 opacity-80 text-xs font-mono font-medium uppercase tracking-widest text-black">
-            <span>Learn to Earn</span> <span>✦</span> <span>AI Unicorn Interactive</span> <span>✦</span> <span>Web3 Rewards</span> <span>✦</span> <span>Token Airdrops</span> <span>✦</span>
-            <span>邊學邊賺</span> <span>✦</span> <span>AI獨角獸互動</span> <span>✦</span> <span>Web3 獎勵</span> <span>✦</span> <span>代幣空投</span> <span>✦</span>
-            <span>Learn to Earn</span> <span>✦</span> <span>AI Unicorn Interactive</span> <span>✦</span> <span>Web3 Rewards</span> <span>✦</span> <span>Token Airdrops</span> <span>✦</span>
+            <span>Learn & Connect</span> <span>✦</span> <span>AI Unicorn Interactive</span> <span>✦</span> <span>Web3 Access</span> <span>✦</span> <span>Ecosystem Rewards</span> <span>✦</span>
+            <span>互動學習</span> <span>✦</span> <span>AI獨角獸互動</span> <span>✦</span> <span>Web3 權益</span> <span>✦</span> <span>生態獎勵</span> <span>✦</span>
+            <span>Learn & Connect</span> <span>✦</span> <span>AI Unicorn Interactive</span> <span>✦</span> <span>Web3 Access</span> <span>✦</span> <span>Ecosystem Rewards</span> <span>✦</span>
         </div>
     </div>
 
@@ -284,7 +296,7 @@
     <section id="how-it-works" class="py-24 px-6 md:px-8 max-w-[1920px] mx-auto border-b border-gray-200">
         <div class="flex justify-between items-end mb-12 reveal-text">
             <div>
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight"><span class="lang-en">How It Works</span><span class="lang-zh">如何賺取空投</span></h2>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight"><span class="lang-en">How It Works</span><span class="lang-zh">如何獲取權益</span></h2>
                 <p class="text-gray-500 font-light"><span class="lang-en">Simple 4-step process to claim your rewards</span><span class="lang-zh">通過互動學習領取獎勵的簡單4步流程</span></p>
             </div>
             <span class="text-xs font-mono text-gray-400 hidden md:block">Process Guide</span>
@@ -302,25 +314,25 @@
             <!-- Step 2 -->
             <div class="p-6 bg-white rounded-lg border border-gray-200 hover:border-black transition-colors group">
                 <div class="w-12 h-12 bg-gray-100 text-black rounded-full flex items-center justify-center text-xl font-bold mb-6 font-mono group-hover:bg-black group-hover:text-white transition-colors">2</div>
-                <h3 class="text-lg font-bold mb-2 group-hover:text-gray-700"><span class="lang-en">Choose Airdrop</span><span class="lang-zh">選擇空投</span></h3>
+                <h3 class="text-lg font-bold mb-2 group-hover:text-gray-700"><span class="lang-en">Choose Quest</span><span class="lang-zh">選擇任務</span></h3>
                 <p class="text-sm text-gray-500 leading-relaxed">
-                    <span class="lang-en">Select an airdrop campaign you want to participate in</span><span class="lang-zh">選擇您想參與的空投活動</span>
+                    <span class="lang-en">Select an ecosystem quest you want to participate in</span><span class="lang-zh">選擇您想參與的生態任務</span>
                 </p>
             </div>
             <!-- Step 3 -->
             <div class="p-6 bg-white rounded-lg border border-gray-200 hover:border-black transition-colors group">
                 <div class="w-12 h-12 bg-gray-100 text-black rounded-full flex items-center justify-center text-xl font-bold mb-6 font-mono group-hover:bg-black group-hover:text-white transition-colors">3</div>
-                <h3 class="text-lg font-bold mb-2 group-hover:text-gray-700"><span class="lang-en">Quiz with Unicorn</span><span class="lang-zh">與獨角獸答題</span></h3>
+                <h3 class="text-lg font-bold mb-2 group-hover:text-gray-700"><span class="lang-en">Quiz with Unicorn</span><span class="lang-zh">与獨角獸答題</span></h3>
                 <p class="text-sm text-gray-500 leading-relaxed">
-                    <span class="lang-en">Answer 10 questions in conversation with AI Unicorn</span><span class="lang-zh">與AI獨角獸對話回答10個問題</span>
+                    <span class="lang-en">Answer 10 questions regarding AI and Film Industry</span><span class="lang-zh">回答10個關於AI和電影產業的問題</span>
                 </p>
             </div>
             <!-- Step 4 -->
             <div class="p-6 bg-white rounded-lg border border-gray-200 hover:border-black transition-colors group">
                 <div class="w-12 h-12 bg-gray-100 text-black rounded-full flex items-center justify-center text-xl font-bold mb-6 font-mono group-hover:bg-black group-hover:text-white transition-colors">4</div>
-                <h3 class="text-lg font-bold mb-2 group-hover:text-gray-700"><span class="lang-en">Claim Rewards</span><span class="lang-zh">領取獎勵</span></h3>
+                <h3 class="text-lg font-bold mb-2 group-hover:text-gray-700"><span class="lang-en">Receive Credits</span><span class="lang-zh">領取通證</span></h3>
                 <p class="text-sm text-gray-500 leading-relaxed">
-                    <span class="lang-en">Pass the quiz and instantly claim your airdrop tokens</span><span class="lang-zh">通過測驗並立即領取您的空投代幣</span>
+                    <span class="lang-en">Pass the quiz and claim your computing credits</span><span class="lang-zh">通過測驗並領取您的算力通證</span>
                 </p>
             </div>
         </div>
@@ -332,13 +344,13 @@
                 <div class="flex-1">
                     <h3 class="text-2xl font-bold mb-2"><span class="lang-en">Meet AI Unicorn</span><span class="lang-zh">認識AI獨角獸</span></h3>
                     <p class="text-gray-600 mb-6 font-light">
-                        <span class="lang-en">AI Unicorn is your friendly guide through the AIF ecosystem. Through interactive conversations and questions, you'll learn about projects, tokens, and opportunities while earning rewards.</span>
-                        <span class="lang-zh">AI獨角獸是您在AIF生態系統中的友好嚮導。通過互動對話和問題，您將了解項目、代幣和機會，同時獲得獎勵。</span>
+                        <span class="lang-en">AI Unicorn is your friendly guide through the AIF ecosystem. Through interactive conversations, you'll learn about how we empower the film industry.</span>
+                        <span class="lang-zh">AI獨角獸是您在AIF生態系統中的友好嚮導。通過互動對話，您將了解我們如何通過技術賦能電影產業，並獲取算力資源。</span>
                     </p>
                     <div class="flex flex-wrap gap-4 font-mono text-xs uppercase tracking-wider">
                         <span class="bg-white px-3 py-1 rounded border border-gray-200">Educational</span>
                         <span class="bg-white px-3 py-1 rounded border border-gray-200">Interactive</span>
-                        <span class="bg-white px-3 py-1 rounded border border-gray-200">Rewarding</span>
+                        <span class="bg-white px-3 py-1 rounded border border-gray-200">Utility</span>
                     </div>
                 </div>
             </div>
@@ -348,8 +360,8 @@
     <!-- Airdrops Section -->
     <section id="airdrops" class="py-24 px-6 md:px-8 max-w-[1920px] mx-auto bg-gray-50">
         <div class="flex justify-between items-end mb-12 reveal-text">
-            <h2 class="text-3xl font-bold tracking-tight"><span class="lang-en">Available Airdrops</span><span class="lang-zh">可用空投</span></h2>
-            <span class="text-xs font-mono text-gray-400">Complete quizzes to unlock</span>
+            <h2 class="text-3xl font-bold tracking-tight"><span class="lang-en">Available Quests</span><span class="lang-zh">可用任務</span></h2>
+            <span class="text-xs font-mono text-gray-400">Complete quizzes to unlock computing power</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -360,12 +372,13 @@
                     <div class="text-4xl">🎁</div>
                     <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-[10px] font-bold font-mono uppercase">Active</span>
                 </div>
-                <h3 class="text-xl font-bold mb-1">AIF Token Airdrop</h3>
-                <div class="text-3xl font-bold font-mono mb-6">500M AIF</div>
+                <!-- Renamed to Computing Credits for compliance -->
+                <h3 class="text-xl font-bold mb-1">AIF Ecosystem Quest</h3>
+                <div class="text-3xl font-bold font-mono mb-6">300M AIF</div>
                 
                 <div class="space-y-3 mb-8 border-t border-gray-100 pt-6">
                     <div class="flex justify-between text-sm">
-                        <span class="text-gray-400"><span class="lang-en">Reward/User</span><span class="lang-zh">每用戶獎勵</span></span>
+                        <span class="text-gray-400"><span class="lang-en">Credit/User</span><span class="lang-zh">每用戶額度</span></span>
                         <span class="font-bold font-mono">1,000 AIF</span>
                     </div>
                     <div class="flex justify-between text-sm">
@@ -384,12 +397,12 @@
                     <div class="text-4xl">🎬</div>
                     <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-[10px] font-bold font-mono uppercase">Active</span>
                 </div>
-                <h3 class="text-xl font-bold mb-1">Genesis Film Token</h3>
+                <h3 class="text-xl font-bold mb-1">Genesis Film IP</h3>
                 <div class="text-3xl font-bold font-mono mb-6">10M FILM</div>
                 
                 <div class="space-y-3 mb-8 border-t border-gray-100 pt-6">
                     <div class="flex justify-between text-sm">
-                        <span class="text-gray-400"><span class="lang-en">Reward/User</span><span class="lang-zh">每用戶獎勵</span></span>
+                        <span class="text-gray-400"><span class="lang-en">Rights/User</span><span class="lang-zh">每用戶權益</span></span>
                         <span class="font-bold font-mono">500 FILM</span>
                     </div>
                     <div class="flex justify-between text-sm">
@@ -413,7 +426,7 @@
                 
                 <div class="space-y-3 mb-8 border-t border-gray-100 pt-6">
                     <div class="flex justify-between text-sm">
-                        <span class="text-gray-400"><span class="lang-en">Reward/User</span><span class="lang-zh">每用戶獎勵</span></span>
+                        <span class="text-gray-400"><span class="lang-en">Credit/User</span><span class="lang-zh">每用戶額度</span></span>
                         <span class="font-bold font-mono">2,000 AIF</span>
                     </div>
                     <div class="flex justify-between text-sm">
@@ -506,7 +519,7 @@
         <div class="flex justify-between items-end mb-12 reveal-text">
             <div>
                 <h2 class="text-3xl font-bold mb-4 tracking-tight"><span class="lang-en">Exclusive Rewards</span><span class="lang-zh">獨家獎勵</span></h2>
-                <p class="text-gray-500 font-light"><span class="lang-en">Redeem tokens for merchandise</span><span class="lang-zh">用您獲得的代幣兌換優質周邊和權益</span></p>
+                <p class="text-gray-500 font-light"><span class="lang-en">Redeem tokens for merchandise</span><span class="lang-zh">用您獲得的通證兌換優質周邊和權益</span></p>
             </div>
         </div>
 
@@ -560,9 +573,9 @@
                 <div>
                     <h4 class="text-xs font-bold uppercase tracking-wider mb-4 text-gray-500"><span class="lang-en">Quick Links</span><span class="lang-zh">快速鏈接</span></h4>
                     <ul class="space-y-3 text-sm font-medium text-gray-300">
-                        <li><a href="#airdrops" class="hover:text-white"><span class="lang-en">Airdrops</span><span class="lang-zh">空投</span></a></li>
+                        <li><a href="#airdrops" class="hover:text-white"><span class="lang-en">Quests</span><span class="lang-zh">任務</span></a></li>
                         <li><a href="#rewards" class="hover:text-white"><span class="lang-en">Rewards</span><span class="lang-zh">獎勵</span></a></li>
-                        <li><a href="#how-it-works" class="hover:text-white"><span class="lang-en">How It Works</span><span class="lang-zh">使用指南</span></a></li>
+                        <li><a href="#how-it-works" class="hover:text-white"><span class="lang-en">Guide</span><span class="lang-zh">指南</span></a></li>
                     </ul>
                 </div>
                 <div>
@@ -578,8 +591,8 @@
             
             <div class="flex justify-between items-end text-[10px] uppercase text-gray-500 font-mono">
                 <p>
-                    <span class="lang-en">© 2025 AIF.Gifts. All rights reserved.</span>
-                    <span class="lang-zh">© 2025 AIF.Gifts。保留所有權利。</span>
+                    <span class="lang-en">© 2025 AIF.Gifts. Operated by HKAIIFF (HK) Limited.</span>
+                    <span class="lang-zh">© 2025 AIF.Gifts。由香港AI國際電影節有限公司運營。</span>
                 </p>
                 <div class="flex gap-4 text-lg">
                     <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
@@ -590,7 +603,7 @@
         </div>
     </footer>
 
-    <!-- Wallet Connection Modal -->
+    <!-- Wallet Connection Modal (COMPLIANCE UPDATE: Added Disclaimer) -->
     <div class="modal" id="walletModal">
         <div class="modal-content">
             <div class="flex justify-between items-center mb-6">
@@ -599,9 +612,37 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <p class="text-gray-500 mb-8 text-sm"><span class="lang-en">Choose your preferred wallet to get started</span><span class="lang-zh">選擇您首選的錢包開始</span></p>
             
-            <div class="space-y-3">
+            <!-- Mandatory Compliance Checkbox per Guidelines Section 2.2 -->
+            <div class="bg-gray-50 p-4 rounded-lg mb-6 border border-gray-100">
+                <p class="text-xs font-bold mb-2 uppercase text-gray-500"><span class="lang-en">Important Declaration</span><span class="lang-zh">重要聲明</span></p>
+                
+                <label class="custom-checkbox flex gap-3 items-start cursor-pointer mb-2">
+                    <input type="checkbox" id="complianceCheck1" class="hidden" onchange="checkCompliance()">
+                    <div class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center bg-white flex-shrink-0">
+                        <svg class="w-3 h-3 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="text-xs text-gray-600 leading-tight">
+                        <span class="lang-en">I confirm I am NOT a resident of Mainland China.</span>
+                        <span class="lang-zh">本人確認非中國大陸居民。</span>
+                    </span>
+                </label>
+
+                <label class="custom-checkbox flex gap-3 items-start cursor-pointer">
+                    <input type="checkbox" id="complianceCheck2" class="hidden" onchange="checkCompliance()">
+                    <div class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center bg-white flex-shrink-0">
+                        <svg class="w-3 h-3 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <span class="text-xs text-gray-600 leading-tight">
+                        <span class="lang-en">I understand the risks involved in digital assets.</span>
+                        <span class="lang-zh">本人知悉數字資產涉及的風險。</span>
+                    </span>
+                </label>
+            </div>
+
+            <p class="text-gray-500 mb-4 text-sm"><span class="lang-en">Choose your preferred wallet</span><span class="lang-zh">選擇您首選的錢包</span></p>
+            
+            <div class="space-y-3 opacity-50 pointer-events-none transition-all" id="walletOptions">
                 <div class="flex items-center gap-4 p-4 border border-gray-200 rounded-lg cursor-pointer hover:border-black hover:bg-gray-50 transition-all" onclick="connectWallet('metamask')">
                     <div class="text-2xl">🦊</div>
                     <div>
@@ -626,8 +667,8 @@
             </div>
 
             <div class="mt-6 pt-6 border-t border-gray-100 text-[10px] text-gray-400 leading-tight">
-                <span class="lang-en">By connecting your wallet, you agree to our Terms of Service and Privacy Policy.</span>
-                <span class="lang-zh">通過連接錢包，您同意我們的服務條款和隱私政策。</span>
+                <span class="lang-en">Service provided by HKAIIFF (HK) Limited under Hong Kong SAR laws.</span>
+                <span class="lang-zh">本服務由 HKAIIFF (HK) Limited 根據香港特別行政區法律提供。</span>
             </div>
         </div>
     </div>
@@ -645,8 +686,8 @@
                     <div class="text-6xl mb-6">🦄</div>
                     <h2 class="text-2xl font-bold mb-3"><span class="lang-en">Welcome! I'm AI Unicorn</span><span class="lang-zh">歡迎！我是AI獨角獸</span></h2>
                     <p class="text-gray-500 text-sm mb-8 leading-relaxed max-w-sm mx-auto">
-                        <span class="lang-en">Let's learn about the AIF ecosystem together! Answer 10 questions correctly to earn your airdrop.</span>
-                        <span class="lang-zh">讓我們一起了解AIF生態系統！正確回答10個問題即可獲得空投。</span>
+                        <span class="lang-en">Let's learn about the AIF ecosystem together! Answer 10 questions correctly to earn your computing power credits.</span>
+                        <span class="lang-zh">讓我們一起了解AIF生態系統！正確回答10個問題即可獲得您的算力通證額度。</span>
                     </p>
                     
                     <div class="grid grid-cols-3 gap-3 mb-8">
@@ -721,10 +762,10 @@
                     </div>
 
                     <button class="w-full bg-black text-white py-3 rounded-full font-bold text-sm mb-3 btn-hover" onclick="claimAirdrop()">
-                        <span class="lang-en">Claim Your Airdrop</span><span class="lang-zh">領取您的空投</span>
+                        <span class="lang-en">Claim Your Credits</span><span class="lang-zh">領取算力通證</span>
                     </button>
                     <button class="w-full border border-gray-200 py-3 rounded-full font-bold text-sm hover:bg-gray-50" onclick="closeQuizModal()">
-                        <span class="lang-en">Back to Airdrops</span><span class="lang-zh">返回空投</span>
+                        <span class="lang-en">Back to Quests</span><span class="lang-zh">返回任務列表</span>
                     </button>
                 </div>
             </div>
@@ -753,8 +794,8 @@
                 <div class="flex gap-4 items-start">
                     <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
                     <div>
-                        <h3 class="font-bold text-sm mb-1"><span class="lang-en">Choose an Airdrop</span><span class="lang-zh">選擇空投</span></h3>
-                        <p class="text-xs text-gray-500"><span class="lang-en">Browse available campaigns.</span><span class="lang-zh">瀏覽可用活動。</span></p>
+                        <h3 class="font-bold text-sm mb-1"><span class="lang-en">Choose a Quest</span><span class="lang-zh">選擇一個任務</span></h3>
+                        <p class="text-xs text-gray-500"><span class="lang-en">Browse available ecosystem tasks.</span><span class="lang-zh">瀏覽可用的生態任務。</span></p>
                     </div>
                 </div>
                 <div class="flex gap-4 items-start">
@@ -767,8 +808,8 @@
                 <div class="flex gap-4 items-start">
                     <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold flex-shrink-0">4</div>
                     <div>
-                        <h3 class="font-bold text-sm mb-1"><span class="lang-en">Claim Your Rewards</span><span class="lang-zh">領取獎勵</span></h3>
-                        <p class="text-xs text-gray-500"><span class="lang-en">Instantly receive tokens.</span><span class="lang-zh">立即獲得代幣。</span></p>
+                        <h3 class="font-bold text-sm mb-1"><span class="lang-en">Receive Credits</span><span class="lang-zh">獲取通證</span></h3>
+                        <p class="text-xs text-gray-500"><span class="lang-en">Instantly receive computing credits.</span><span class="lang-zh">立即獲得算力通證。</span></p>
                     </div>
                 </div>
             </div>
@@ -780,7 +821,7 @@
     </div>
 
     <script>
-        // --- 1. Language System (Based on index.html) ---
+        // --- 1. Language System ---
         function toggleLanguage() {
             const body = document.body;
             const currentLang = body.getAttribute('data-lang');
@@ -800,16 +841,32 @@
             document.getElementById('mobileMenu').classList.remove('open');
         }
 
-        // --- 3. Wallet Logic ---
+        // --- 3. Wallet Logic (UPDATED FOR COMPLIANCE) ---
         let isWalletConnected = false;
         let userWalletAddress = '';
 
         function openWalletModal() {
             document.getElementById('walletModal').classList.add('active');
+            // Reset state
+            document.getElementById('complianceCheck1').checked = false;
+            document.getElementById('complianceCheck2').checked = false;
+            checkCompliance();
         }
 
         function closeWalletModal() {
             document.getElementById('walletModal').classList.remove('active');
+        }
+
+        function checkCompliance() {
+            const c1 = document.getElementById('complianceCheck1').checked;
+            const c2 = document.getElementById('complianceCheck2').checked;
+            const walletOptions = document.getElementById('walletOptions');
+            
+            if (c1 && c2) {
+                walletOptions.classList.remove('opacity-50', 'pointer-events-none');
+            } else {
+                walletOptions.classList.add('opacity-50', 'pointer-events-none');
+            }
         }
 
         function connectWallet(type) {
@@ -843,25 +900,28 @@
             document.getElementById('tutorialOverlay').classList.remove('active');
         }
 
-        // --- 5. Quiz System (Updated for Multilingual Support) ---
+        // --- 5. Quiz System (Optimized for Compliance Text) ---
         let currentQuiz = null;
         let currentQuestionIndex = 0;
         let userAnswers = [];
         let selectedOption = null;
 
-        // Simplified data structure that holds both languages
+        // Optimized data structure per compliance guidelines
+        // Changes: 
+        // 1. "Investors" -> "IP Holders/Contributors"
+        // 2. AIF Explanation emphasizes "Computing Power" / "Digital Petroleum"
         const quizData = {
             'aif-airdrop': {
                 reward: '1000 AIF',
                 questions: [
                     {
-                        q_en: 'What is the total supply of AIF tokens?',
-                        q_zh: 'AIF代幣的總供應量是多少？',
-                        options_en: ['1 Billion', '10 Billion', '100 Billion', '1 Trillion'],
-                        options_zh: ['10億', '100億', '1000億', '1萬億'],
+                        q_en: 'What is the function of AIF tokens?',
+                        q_zh: 'AIF通證的主要功能是什麼？',
+                        options_en: ['Just for trading', 'AI Computing Power Settlement', 'Buying coffee', 'No use'],
+                        options_zh: ['僅供交易', 'AI算力結算單位', '買咖啡', '無用處'],
                         correct: 1,
-                        expl_en: 'AIF has a total supply of 10 billion tokens!',
-                        expl_zh: 'AIF的總供應量為100億枚！'
+                        expl_en: 'AIF acts as "Digital Petroleum" to power AI video generation!',
+                        expl_zh: 'AIF是AI時代的“數字石油”，用於支付算力成本！'
                     },
                     {
                         q_en: 'Which blockchain networks does AIF support?',
@@ -875,11 +935,11 @@
                      {
                         q_en: 'What is AIF.Market?',
                         q_zh: '什麼是 AIF.Market？',
-                        options_en: ['Crypto Exchange', 'Film Funding Platform', 'Game', 'Social Network'],
-                        options_zh: ['加密交易所', '電影融資平台', '遊戲', '社交網絡'],
+                        options_en: ['Crypto Exchange', 'Film Project Funding', 'Game', 'Social Network'],
+                        options_zh: ['加密交易所', '電影項目融資平台', '遊戲', '社交網絡'],
                         correct: 1,
-                        expl_en: 'AIF.Market is the world\'s first AI-native film project funding platform!',
-                        expl_zh: 'AIF.Market 是全球首個AI原生電影項目融資平台！'
+                        expl_en: 'AIF.Market enables AI-native film project funding and copyright distribution!',
+                        expl_zh: 'AIF.Market 是全球首個AI原生電影項目融資與版權分發平台！'
                     }
                 ]
             },
@@ -887,22 +947,22 @@
                 reward: '500 FILM',
                 questions: [
                     {
-                        q_en: 'What type of project is Genesis Film?',
-                        q_zh: 'Genesis Film是什麼類型的項目？',
-                        options_en: ['Documentary', 'AI Sci-Fi Film', 'Reality Show', 'Music Video'],
-                        options_zh: ['紀錄片', 'AI科幻電影', '真人秀', '音樂視頻'],
+                        q_en: 'What does the Genesis Film Token represent?',
+                        q_zh: 'Genesis Film Token 代表什麼？',
+                        options_en: ['Just a coin', 'Digital Copyright Asset', 'Donation', 'Ticket'],
+                        options_zh: ['只是一個幣', '數字版權資產', '捐款', '電影票'],
                         correct: 1,
-                        expl_en: 'Genesis Film is a groundbreaking AI-generated science fiction film!',
-                        expl_zh: 'Genesis Film是一部開創性的AI生成科幻電影！'
+                        expl_en: 'It represents a digital copyright share of the film IP!',
+                        expl_zh: '它代表電影IP的數字化版權權益！'
                     },
                      {
-                        q_en: 'How many FILM tokens are allocated to investors?',
-                        q_zh: '有多少FILM代幣分配給投資者？',
-                        options_en: ['30%', '50%', '70%', '90%'],
-                        options_zh: ['30%', '50%', '70%', '90%'],
+                        q_en: 'How is rights allocation typically distributed?',
+                        q_zh: '權益分配通常如何進行？',
+                        options_en: ['100% to studio', '50% to IP Holders', 'All to marketing', 'None'],
+                        options_zh: ['100%給工作室', '50%給版權持有者', '全給市場', '無'],
                         correct: 1,
-                        expl_en: 'FilmToken allocation typically gives 50% to investors!',
-                        expl_zh: 'FilmToken分配通常將50%給予投資者！'
+                        expl_en: 'Allocation typically gives 50% to early IP holders/contributors!',
+                        expl_zh: '分配通常將50%給予早期版權持有者/貢獻者！'
                     }
                 ]
             },
@@ -943,8 +1003,8 @@
                         options_en: ['Cooking', 'AI Filmmaking', 'Coding', 'Dancing'],
                         options_zh: ['烹飪', 'AI電影製作', '編程', '跳舞'],
                         correct: 1,
-                        expl_en: 'We teach AI filmmaking!',
-                        expl_zh: '我們教授AI電影製作！'
+                        expl_en: 'We teach AI filmmaking techniques!',
+                        expl_zh: '我們教授AI電影製作技術！'
                     }
                 ]
             }
@@ -1087,7 +1147,7 @@
         function claimAirdrop() {
             const correctAnswers = userAnswers.filter(a => a.correct).length;
             if (correctAnswers >= 1) { // Simplified
-                showNotification('🎉 Airdrop claimed successfully!', 'success');
+                showNotification('🎉 Credits claimed successfully!', 'success');
                 closeQuizModal();
             } else {
                 showNotification('Score too low to claim.', 'warning');
